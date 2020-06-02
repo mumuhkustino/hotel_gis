@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hotel GIS</string>
+    <string name="list_hotel">List Hotel</string>
+    <string name="add_hotel">Tambah Hotel</string>
+    <string name="add_room">Tambah Kamar</string>
+    <string name="account_image">Account Image</string>
+</resources>
