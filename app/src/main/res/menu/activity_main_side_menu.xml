@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/listHotel"
+            android:icon="@drawable/ic_hotel_white"
+            android:title="@string/list_hotel"/>
+        <item
+            android:id="@+id/addHotel"
+            android:icon="@drawable/ic_add_circle_white"
+            android:title="@string/add_hotel"/>
+        <item
+            android:id="@+id/addRoom"
+            android:icon="@drawable/ic_add_circle_white"
+            android:title="@string/add_room"/>
+    </group>
+
+</menu>
