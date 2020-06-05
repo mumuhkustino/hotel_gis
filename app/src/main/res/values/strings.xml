@@ -7,4 +7,8 @@
     <string name="hotel_image">Hotel Image</string>
     <string name="home_image">Home Image</string>
     <string name="phone_image">Phone Image</string>
+    <string name="address">Alamat</string>
+    <string name="phone">No. Telepon</string>
+    <string name="location">Posisi pada Map</string>
+    <string name="room_name">Family Suite</string>
 </resources>

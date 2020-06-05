@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/layout_horizontal_padding"
         android:paddingVertical="@dimen/layout_vertical_padding"
-
         android:scrollbars="vertical"
         tools:listitem="@layout/item_content_list_hotel"/>
 

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".admin.ui.DetailHotelActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="0.59">
+
+        <ImageView
+            android:id="@+id/imgHotel"
+            android:contentDescription="@string/hotel_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            tools:src="@drawable/ic_launcher_background"/>
+
+        <TextView
+            android:id="@+id/tvHotelName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_vertical_margin"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/home_image"
+                android:layout_marginRight="@dimen/image_horizontal_margin"
+                android:layout_marginEnd="@dimen/image_horizontal_margin"
+                android:src="@drawable/ic_home_purple"
+                tools:src="@drawable/ic_home_purple"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:maxLines="3"
+                tools:text="@string/address"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvHotelAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            tools:text="Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_vertical_margin"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/home_image"
+                        android:layout_marginRight="@dimen/image_horizontal_margin"
+                        android:layout_marginEnd="@dimen/image_horizontal_margin"
+                        android:src="@drawable/ic_phone_purple"
+                        tools:src="@drawable/ic_phone_purple"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone"
+                        android:maxLines="3"
+                        tools:text="@string/phone"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvHotelPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    tools:text="Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_vertical_margin"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/home_image"
+                        android:layout_marginRight="@dimen/image_horizontal_margin"
+                        android:layout_marginEnd="@dimen/image_horizontal_margin"
+                        android:src="@drawable/ic_location_purple"
+                        tools:src="@drawable/ic_location_purple"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/location"
+                        android:maxLines="3"
+                        tools:text="@string/location"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvHotelLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    tools:text="Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEditHotel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Data Hotel"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.02"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.39"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/layout_horizontal_padding"
+                android:paddingVertical="@dimen/layout_vertical_padding"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_content_list_room"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_add_white"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

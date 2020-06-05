@@ -42,8 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             ListHotelAdapter.TYPE_CONTENT
         )
         val listHotelAdapter = ListHotelAdapter(listViewType = listViewType)
-//        listHotelAdapter.listHotel = loadHotel()
-        listHotelAdapter.setHotels(loadHotel())
+        listHotelAdapter.listHotel = loadHotel()
         recyclerViewHotel.adapter = listHotelAdapter
     }
 
