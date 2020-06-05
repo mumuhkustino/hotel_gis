@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
-<!--TODO Isi Activity Main-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHotel"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/layout_horizontal_padding"
+        android:paddingVertical="@dimen/layout_vertical_padding"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_content_list_hotel"/>
+
+</LinearLayout>

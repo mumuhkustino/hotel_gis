@@ -4,4 +4,7 @@
     <string name="add_hotel">Tambah Hotel</string>
     <string name="add_room">Tambah Kamar</string>
     <string name="account_image">Account Image</string>
+    <string name="hotel_image">Hotel Image</string>
+    <string name="home_image">Home Image</string>
+    <string name="phone_image">Phone Image</string>
 </resources>
