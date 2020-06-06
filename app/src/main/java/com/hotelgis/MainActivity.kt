@@ -1,5 +1,6 @@
 package com.hotelgis
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -8,12 +9,13 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.hotelgis.admin.adapter.ListHotelAdapter
+import com.hotelgis.admin.ui.DetailHotelActivity
 import com.hotelgis.model.Hotel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListHotelAdapter.OnItemClickCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,24 +33,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setCheckedItem(R.id.listHotel)
 
         recyclerViewHotel.layoutManager = LinearLayoutManager(this)
-        val listViewType = mutableListOf<Int>(
-            ListHotelAdapter.TYPE_HEADER,
-            ListHotelAdapter.TYPE_CONTENT,
-            ListHotelAdapter.TYPE_CONTENT,
-            ListHotelAdapter.TYPE_CONTENT,
-            ListHotelAdapter.TYPE_CONTENT,
-            ListHotelAdapter.TYPE_CONTENT,
-            ListHotelAdapter.TYPE_CONTENT,
-            ListHotelAdapter.TYPE_CONTENT
-        )
-        val listHotelAdapter = ListHotelAdapter(listViewType = listViewType)
+
+        val listHotelAdapter = ListHotelAdapter(this)
         listHotelAdapter.listHotel = loadHotel()
         recyclerViewHotel.adapter = listHotelAdapter
     }
 
     private fun loadHotel(): List<Hotel> {
         return mutableListOf(
-            Hotel("List Hotel", "", "", "", "", ""),
             Hotel("Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
                 "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0"),
@@ -85,4 +77,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    override fun onItemClicked(hotel: Hotel) {
+        if (hotel != null) {
+            val intentToDetail = Intent(baseContext, DetailHotelActivity::class.java)
+            intentToDetail.putExtra(DetailHotelActivity.EXTRA_HOTEL, hotel)
+            startActivity(intentToDetail)
+        }
+    }
+
 }

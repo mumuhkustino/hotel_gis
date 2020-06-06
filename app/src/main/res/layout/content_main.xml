@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="?attr/actionBarSize"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/layout_horizontal_padding"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/list_hotel"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHotel"
-        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/layout_horizontal_padding"
         android:paddingVertical="@dimen/layout_vertical_padding"
         android:scrollbars="vertical"
-        tools:listitem="@layout/item_content_list_hotel"/>
+        tools:listitem="@layout/item_list_hotel"/>
 
 </LinearLayout>

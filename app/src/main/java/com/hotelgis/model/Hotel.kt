@@ -1,5 +1,9 @@
 package com.hotelgis.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Hotel (
     var name:String,
     var address:String,
@@ -7,4 +11,4 @@ data class Hotel (
     var image:String,
     var lat:String,
     var long:String
-)
+): Parcelable

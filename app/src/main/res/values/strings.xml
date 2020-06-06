@@ -11,4 +11,10 @@
     <string name="phone">No. Telepon</string>
     <string name="location">Posisi pada Map</string>
     <string name="room_name">Family Suite</string>
+    <string name="list_room">List Kamar</string>
+    <string name="edit_data_hotel">Edit Data Hotel</string>
+    <string name="room_quantity">Jumlah Kamar :</string>
+    <string name="room_cost">Harga :</string>
+    <string name="edit_room">Edit Kamar</string>
+    <string name="room_code">Kode :</string>
 </resources>
