@@ -48,7 +48,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/home_image"
-                    android:layout_marginRight="@dimen/image_horizontal_margin"
                     android:layout_marginEnd="@dimen/image_horizontal_margin"
                     android:src="@drawable/ic_home_purple"
                     tools:src="@drawable/ic_home_purple"/>
@@ -72,7 +71,6 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/image_horizontal_margin"
                     android:layout_marginEnd="@dimen/image_horizontal_margin"
                     android:contentDescription="@string/phone_image"
                     android:src="@drawable/ic_phone_purple"

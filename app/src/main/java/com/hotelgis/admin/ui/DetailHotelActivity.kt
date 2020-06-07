@@ -1,5 +1,6 @@
 package com.hotelgis.admin.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -7,16 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.hotelgis.R
+import com.hotelgis.admin.adapter.ListRoomAdapter
 import com.hotelgis.model.Hotel
 import com.hotelgis.model.Room
-import com.roomgis.admin.adapter.ListRoomAdapter
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_detail_hotel.*
 
 class DetailHotelActivity : AppCompatActivity() {
 
     companion object {
-        val EXTRA_HOTEL = "EXTRA_HOTEL"
+        const val EXTRA_DETAIL_HOTEL = "EXTRA_DETAIL_HOTEL"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,7 @@ class DetailHotelActivity : AppCompatActivity() {
 
         var hotel: Hotel? = null
         if (intent != null) {
-            hotel = intent.getParcelableExtra(EXTRA_HOTEL)
+            hotel = intent.getParcelableExtra(EXTRA_DETAIL_HOTEL)
         }
 
         toolbar.title = hotel?.name
@@ -42,13 +43,19 @@ class DetailHotelActivity : AppCompatActivity() {
             tvHotelAddress.text = hotel.address
             tvHotelPhone.text = hotel.phone
             tvHotelLocation.text = (hotel.lat + ", " + hotel.long)
+
+            fabAddRoom.setOnClickListener {
+                val intentToAddRoom = Intent(baseContext, AddEditRoomActivity::class.java)
+                intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel.name)
+                startActivity(intentToAddRoom)
+            }
         }
 
         recyclerViewRoom.layoutManager = LinearLayoutManager(this)
 
-        val listHotelAdapter = ListRoomAdapter()
-        listHotelAdapter.listRoom = loadRoom()
-        recyclerViewRoom.adapter = listHotelAdapter
+        val listRoomAdapter = ListRoomAdapter()
+        listRoomAdapter.listRoom = loadRoom()
+        recyclerViewRoom.adapter = listRoomAdapter
     }
 
     private fun loadRoom(): List<Room> {
@@ -87,10 +94,10 @@ class DetailHotelActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 }

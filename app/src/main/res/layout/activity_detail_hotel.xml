@@ -34,18 +34,22 @@
             android:contentDescription="@string/hotel_image"
             android:layout_marginVertical="@dimen/layout_vertical_margin"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:minHeight="150dp"
             tools:src="@drawable/ic_launcher_background"/>
 
         <TextView
             android:id="@+id/tvHotelName"
             android:layout_marginVertical="@dimen/layout_vertical_margin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"
+            android:layout_weight="0.075"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.075"
             android:layout_marginBottom="@dimen/layout_vertical_margin"
             android:orientation="horizontal">
 
@@ -69,14 +73,17 @@
         <TextView
             android:id="@+id/tvHotelAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
             android:layout_marginBottom="@dimen/layout_vertical_margin"
             android:maxLines="3"
             tools:text="Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung"/>
 
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.175"
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/layout_vertical_margin">
 
@@ -159,26 +166,31 @@
         <Button
             android:id="@+id/btnEditHotel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.175"
             android:text="@string/edit_data_hotel"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.02"
-        android:orientation="vertical"
-        android:paddingHorizontal="@dimen/layout_horizontal_padding"
-        android:paddingVertical="@dimen/layout_vertical_padding">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="0.02"-->
+<!--        android:orientation="vertical"-->
+<!--        android:paddingHorizontal="@dimen/layout_horizontal_padding"-->
+<!--        android:paddingVertical="@dimen/layout_vertical_padding"-->
+<!--        android:background="@android:color/transparent">-->
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/layout_horizontal_padding"
+            android:layout_marginBottom="@dimen/layout_vertical_margin"
             android:layout_gravity="center"
             android:background="@android:color/darker_gray"/>
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -203,7 +215,7 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="@dimen/layout_vertical_padding"
                 android:scrollbars="vertical"
-                tools:listitem="@layout/item_content_list_room"/>
+                tools:listitem="@layout/item_list_room"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabAddRoom"

@@ -1,6 +1,5 @@
-package com.roomgis.admin.adapter
+package com.hotelgis.admin.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +14,17 @@ import com.hotelgis.R
 import com.hotelgis.model.Room
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class ListRoomAdapter (): RecyclerView.Adapter<ListRoomAdapter.ViewHolder>() {
+class ListRoomAdapter: RecyclerView.Adapter<ListRoomAdapter.ViewHolder>() {
 
     var listRoom: List<Room> = arrayListOf()
 
-    internal fun setRooms(notes : List<Room>){
-        this.listRoom = notes
+    set(value) {
+        field = value
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_content_list_room, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_room, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -35,7 +34,6 @@ class ListRoomAdapter (): RecyclerView.Adapter<ListRoomAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val room = listRoom[position]
 
-        Log.d("", room.toString())
         holder.tvRoomCode.text = room.code
         holder.tvRoomName.text = room.name
         holder.tvRoomQuantity.text = room.quantity.toString()

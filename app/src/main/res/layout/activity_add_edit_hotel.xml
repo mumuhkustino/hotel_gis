@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".admin.ui.AddEditHotelActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hotel_name"/>
+
+            <EditText
+                android:id="@+id/edtHotelName"
+                android:autofillHints="@string/hotel_name"
+                android:hint="@string/hotel_name"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_purple"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hotel_address"/>
+
+            <EditText
+                android:id="@+id/edtHotelAddress"
+                android:autofillHints="@string/hotel_address"
+                android:hint="@string/hotel_address"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@drawable/border_purple"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hotel_phone"/>
+
+            <EditText
+                android:id="@+id/edtHotelPhone"
+                android:autofillHints="@string/hotel_phone"
+                android:hint="@string/hotel_phone"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_purple"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hotel_foto"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgHotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher_background"
+                    android:contentDescription="@string/hotel_image"/>
+
+                <TextView
+                    android:id="@+id/tvImageName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#4D000000"
+                    android:layout_marginHorizontal="@dimen/card_horizontal_margin"
+                    android:layout_marginBottom="@dimen/layout_vertical_margin"
+                    android:padding="16dp"
+                    android:text="Image1.jpeg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:id="@+id/btnBrowseImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginVertical="@dimen/layout_vertical_margin"
+                    android:layout_marginBottom="@dimen/layout_vertical_margin"
+                    android:layout_marginEnd="@dimen/layout_horizontal_padding"
+                    android:text="@string/browse"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/latitude"/>
+
+            <EditText
+                android:id="@+id/edtHotelLatitude"
+                android:autofillHints="@string/latitude"
+                android:hint="@string/latitude"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_purple"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/longitude"/>
+
+            <EditText
+                android:id="@+id/edtHotelLongitude"
+                android:autofillHints="@string/longitude"
+                android:hint="@string/longitude"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_purple"/>
+
+            <Button
+                android:id="@+id/btnAddDataHotel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_data_hotel"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

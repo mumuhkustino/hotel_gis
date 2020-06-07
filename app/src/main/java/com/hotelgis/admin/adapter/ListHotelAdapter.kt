@@ -32,7 +32,6 @@ class ListHotelAdapter(private val onItemClickCallback: OnItemClickCallback): Re
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val hotel = listHotel[position]
 
-//        Log.d("", hotel.toString())
         holder.tvHotelName.text = hotel.name
         holder.tvHotelAddress.text = hotel.address
         holder.tvHotelPhone.text = hotel.phone

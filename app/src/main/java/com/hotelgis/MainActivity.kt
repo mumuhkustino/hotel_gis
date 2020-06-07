@@ -9,6 +9,8 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.hotelgis.admin.adapter.ListHotelAdapter
+import com.hotelgis.admin.ui.AddEditHotelActivity
+import com.hotelgis.admin.ui.AddEditRoomActivity
 import com.hotelgis.admin.ui.DetailHotelActivity
 import com.hotelgis.model.Hotel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
+
         navView.setCheckedItem(R.id.listHotel)
 
         recyclerViewHotel.layoutManager = LinearLayoutManager(this)
@@ -68,10 +71,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when (p0.itemId) {
             R.id.addHotel -> {
-                TODO()
+                val intentToDetail = Intent(baseContext, AddEditHotelActivity::class.java)
+                startActivity(intentToDetail)
             }
             R.id.addRoom -> {
-                TODO()
+                val intentToDetail = Intent(baseContext, AddEditRoomActivity::class.java)
+                startActivity(intentToDetail)
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
@@ -81,9 +86,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onItemClicked(hotel: Hotel) {
         if (hotel != null) {
             val intentToDetail = Intent(baseContext, DetailHotelActivity::class.java)
-            intentToDetail.putExtra(DetailHotelActivity.EXTRA_HOTEL, hotel)
+            intentToDetail.putExtra(DetailHotelActivity.EXTRA_DETAIL_HOTEL, hotel)
             startActivity(intentToDetail)
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        navView.setCheckedItem(R.id.listHotel)
+    }
 }

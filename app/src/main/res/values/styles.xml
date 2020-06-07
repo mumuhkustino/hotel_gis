@@ -17,12 +17,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="CardViewStyle" parent="android:Widget.TextView">
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
-        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
-        <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="cardPreventCornerOverlap">false</item>
-        <item name="cardUseCompatPadding">true</item>
+    <style name="EditTextStylePurple" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/colorPurple</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:background">@drawable/border_purple</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">5dp</item>
     </style>
+
+
 
 </resources>
