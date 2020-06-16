@@ -33,4 +33,15 @@
     <string name="roomname">Nama Kamar</string>
     <string name="roomcode">Kode Kamar</string>
     <string name="place_room">Hotel Tempat Kamar</string>
+    <string name="user_name">Nama</string>
+    <string name="user_email">Email</string>
+    <string name="user_no_telp">No Tlp</string>
+    <string name="user_password">Password</string>
+    <string name="retype_password">Konfirmasi Password</string>
+    <string name="registration">Registrasi</string>
+
+    <string-array name="list_hotel_name">
+        <item>Hotel Hilton Bandung</item>
+    </string-array>
+
 </resources>

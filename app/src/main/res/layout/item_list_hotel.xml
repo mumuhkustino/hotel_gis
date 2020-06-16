@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/card_vertical_margin"
-    app:cardCornerRadius="@dimen/card_corner_radius"
-    app:cardElevation="@dimen/card_elevation">
+    android:layout_marginVertical="16dp"
+    android:layout_marginHorizontal="16dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,21 +27,22 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingVertical="@dimen/layout_vertical_padding"
-            android:paddingHorizontal="@dimen/layout_horizontal_padding"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="10dp"
             android:layout_weight="0.6">
 
             <TextView
                 android:id="@+id/tvHotelName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/text_vertical_margin"
+                android:layout_marginBottom="10dp"
+                style="@style/TextViewTitlePink"
                 tools:text="@string/list_hotel"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="@dimen/layout_vertical_margin"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:layout_weight="0.4">
 
@@ -48,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/home_image"
-                    android:layout_marginEnd="@dimen/image_horizontal_margin"
+                    android:layout_marginEnd="4dp"
                     android:src="@drawable/ic_home_purple"
                     tools:src="@drawable/ic_home_purple"/>
 
@@ -57,6 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
+                    android:textColor="@color/colorLightBlack"
                     tools:text="Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung"/>
 
             </LinearLayout>
@@ -66,12 +69,12 @@
                 android:layout_height="0dp"
                 android:orientation="horizontal"
                 android:layout_weight="0.3"
-                android:layout_marginBottom="@dimen/phone_vertical_margin">
+                android:layout_marginBottom="4dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/image_horizontal_margin"
+                    android:layout_marginEnd="4dp"
                     android:contentDescription="@string/phone_image"
                     android:src="@drawable/ic_phone_purple"
                     tools:src="@drawable/ic_phone_purple"/>
@@ -81,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
+                    android:textColor="@color/colorLightBlack"
                     tools:text="@string/list_hotel"/>
 
             </LinearLayout>

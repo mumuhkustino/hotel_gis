@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".admin.ui.AddEditRoomActivity"
+        <activity android:name=".admin.ui.RegisterUserActivity"></activity>
+        <activity
+            android:name=".admin.ui.AddEditRoomActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".admin.ui.AddEditHotelActivity"
+        <activity
+            android:name=".admin.ui.AddEditHotelActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".admin.ui.DetailHotelActivity"
