@@ -4,6 +4,14 @@
     <string name="add_hotel">Tambah Hotel</string>
     <string name="add_room">Tambah Kamar</string>
     <string name="account_image">Account Image</string>
+    <string name="hostel_gis_login">Hotel GIS - Login</string>
+    <string name="username_colon">Username :</string>
+    <string name="username">Username</string>
+    <string name="password_colon">Password :</string>
+    <string name="password">Password</string>
+    <string name="login_user">Login User</string>
+    <string name="login_admin">Login Admin</string>
+    <string name="belum_terdaftar_q_registrasi">Belum Terdaftar? Registrasi</string>
     <string name="hotel_image">Hotel Image</string>
     <string name="home_image">Home Image</string>
     <string name="phone_image">Phone Image</string>
