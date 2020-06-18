@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="nav_vertical_margin">16dp</dimen>
     <dimen name="nav_horizontal_margin">16dp</dimen>
-    <dimen name="nav_height">200dp</dimen>
+    <dimen name="nav_height">100dp</dimen>
+    <dimen name="layout_vertical_padding">8dp</dimen>
+    <dimen name="layout_horizontal_padding">10dp</dimen>
+    <dimen name="image_horizontal_margin">4dp</dimen>
+    <dimen name="phone_vertical_margin">4dp</dimen>
+    <dimen name="text_vertical_margin">10dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="card_vertical_margin">16dp</dimen>
+    <dimen name="card_horizontal_margin">8dp</dimen>
+    <dimen name="layout_vertical_margin">8dp</dimen>
+
+    <dimen name="design_fab_image_size" tools:override="true">32dp</dimen>
 </resources>

@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPink</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -17,4 +17,69 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="NavigationViewPink" parent="Widget.Design.NavigationView">
+        <item name="itemTextColor">@android:color/white</item>
+        <item name="itemIconTint">@android:color/white</item>
+        <item name="android:background">@color/colorPink</item>
+    </style>
+
+    <style name="EditTextStylePurple" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/colorLightBlack</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:background">@drawable/border_purple</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="EditTextStylePink" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/colorLightBlack</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:background">@drawable/border_pink</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="TextViewTitlePurple" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorPurple</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextViewSecondTitlePurple" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorPurple</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextViewTitlePink" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorPink</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextViewSecondTitlePink" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorPink</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextViewPink" parent="android:Widget.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/color_light_pink</item>
+    </style>
+
+    <style name="ButtonPink" parent="android:Widget.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/color_pink</item>
+    </style>
+
+    <style name="ImageButtonBlack" parent="android:Widget.ImageButton">
+        <item name="android:background">@drawable/color_black</item>
+    </style>
+
 </resources>
+

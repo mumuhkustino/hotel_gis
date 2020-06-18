@@ -12,4 +12,44 @@
     <string name="login_user">Login User</string>
     <string name="login_admin">Login Admin</string>
     <string name="belum_terdaftar_q_registrasi">Belum Terdaftar? Registrasi</string>
+    <string name="hotel_image">Hotel Image</string>
+    <string name="home_image">Home Image</string>
+    <string name="phone_image">Phone Image</string>
+    <string name="address">Alamat</string>
+    <string name="phone">No. Telepon</string>
+    <string name="location">Posisi pada Map</string>
+    <string name="room_name">Family Suite</string>
+    <string name="list_room">List Kamar</string>
+    <string name="edit_data_hotel">Edit Data Hotel</string>
+    <string name="edit_data_room">Edit Data Kamar</string>
+    <string name="room_quantity">Jumlah Kamar :</string>
+    <string name="room_cost">Harga :</string>
+    <string name="edit_room">Edit Kamar</string>
+    <string name="room_code">Kode :</string>
+    <string name="hotel_name">Nama Hotel</string>
+    <string name="hotel_address">Alamat Hotel</string>
+    <string name="latitude">Latitude</string>
+    <string name="hotel_phone">No Telepon</string>
+    <string name="longitude">Longitude</string>
+    <string name="hotel_foto">Foto Hotel</string>
+    <string name="add_data_hotel">Tambah Data Hotel</string>
+    <string name="add_data_room">Tambah Data Kamar</string>
+    <string name="browse">Browse...</string>
+    <string name="room_foto">Foto Kamar</string>
+    <string name="room_cost_day">Harga Kamar per Malam</string>
+    <string name="roomquantity">Jumlah Kamar</string>
+    <string name="roomname">Nama Kamar</string>
+    <string name="roomcode">Kode Kamar</string>
+    <string name="place_room">Hotel Tempat Kamar</string>
+    <string name="user_name">Nama</string>
+    <string name="user_email">Email</string>
+    <string name="user_no_telp">No Tlp</string>
+    <string name="user_password">Password</string>
+    <string name="retype_password">Konfirmasi Password</string>
+    <string name="registration">Registrasi</string>
+
+    <string-array name="list_hotel_name">
+        <item>Hotel Hilton Bandung</item>
+    </string-array>
+
 </resources>
