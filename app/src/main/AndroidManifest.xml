@@ -13,10 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity"></activity>
-        <activity
-            android:name=".MainActivity"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
         <activity android:name=".admin.ui.RegisterUserActivity"></activity>
         <activity
             android:name=".admin.ui.AddEditRoomActivity"
