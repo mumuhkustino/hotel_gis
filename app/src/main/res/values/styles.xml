@@ -77,6 +77,11 @@
         <item name="android:background">@drawable/color_pink</item>
     </style>
 
+    <style name="ButtonBlue" parent="android:Widget.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/color_blue</item>
+    </style>
+
     <style name="ImageButtonBlack" parent="android:Widget.ImageButton">
         <item name="android:background">@drawable/color_black</item>
     </style>

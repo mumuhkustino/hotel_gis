@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    style="@style/TextViewTitlePink"
+                    style="@style/TextViewTitlePurple"
                     tools:text="@string/room_name"/>
 
                 <LinearLayout
@@ -127,7 +127,7 @@
                         android:layout_weight="0.7"
                         android:layout_marginVertical="12dp"
                         android:layout_marginEnd="6dp"
-                        style="@style/ButtonPink"
+                        style="@style/ButtonBlue"
                         android:text="@string/edit_room"/>
 
                     <ImageButton
