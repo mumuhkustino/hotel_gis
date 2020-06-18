@@ -34,7 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:hint="@string/username" />
+        android:backgroundTint="@color/colorPurple"
+        android:hint="@string/username"
+        android:textCursorDrawable="@color/colorPurple"
+        android:textSize="12sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -46,9 +49,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:hint="@string/password" />
+        android:hint="@string/password"
+        android:textSize="12sp" />
 
     <Button
+        android:id="@+id/btn_login_user"
+        style="@style/ButtonPink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -56,13 +62,16 @@
         android:textAllCaps="false" />
 
     <Button
+        android:id="@+id/btn_login_admin"
+        style="@style/ButtonPink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="6dp"
         android:text="@string/login_admin"
         android:textAllCaps="false" />
 
     <TextView
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
