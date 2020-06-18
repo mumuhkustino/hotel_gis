@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.075"
-            style="@style/TextViewTitlePink"
+            style="@style/TextViewTitlePurple"
             tools:text="Hotel Hilton Bandung"/>
 
         <LinearLayout
@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:textSize="16sp"
                 android:text="@string/address"
-                style="@style/TextViewSecondTitlePink"
+                style="@style/TextViewSecondTitlePurple"
                 tools:text="@string/address"/>
 
         </LinearLayout>
@@ -129,7 +129,7 @@
                         android:layout_height="match_parent"
                         android:textSize="16sp"
                         android:text="@string/phone"
-                        style="@style/TextViewSecondTitlePink"
+                        style="@style/TextViewSecondTitlePurple"
                         tools:text="@string/phone"/>
 
                 </LinearLayout>
@@ -168,7 +168,7 @@
                         android:layout_height="match_parent"
                         android:textSize="16sp"
                         android:text="@string/location"
-                        style="@style/TextViewSecondTitlePink"
+                        style="@style/TextViewSecondTitlePurple"
                         tools:text="@string/location"/>
 
                 </LinearLayout>
@@ -191,7 +191,7 @@
             android:layout_weight="0.15"
             android:layout_marginHorizontal="16dp"
             android:text="@string/edit_data_hotel"
-            style="@style/ButtonPink"/>
+            style="@style/ButtonBlue"/>
 
     </LinearLayout>
 
@@ -215,7 +215,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/list_room"
-            style="@style/TextViewTitlePink"/>
+            style="@style/TextViewTitlePurple"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

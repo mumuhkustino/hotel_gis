@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginHorizontal="16dp"
-                style="@style/TextViewTitlePink"
+                style="@style/TextViewTitlePurple"
                 android:text="@string/hotel_name"/>
 
             <EditText
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginHorizontal="16dp"
-                style="@style/TextViewTitlePink"
+                style="@style/TextViewTitlePurple"
                 android:text="@string/hotel_address"/>
 
             <EditText
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginHorizontal="16dp"
-                style="@style/TextViewTitlePink"
+                style="@style/TextViewTitlePurple"
                 android:text="@string/hotel_phone"/>
 
             <EditText
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginHorizontal="16dp"
-                style="@style/TextViewTitlePink"
+                style="@style/TextViewTitlePurple"
                 android:text="@string/hotel_foto"/>
 
             <androidx.cardview.widget.CardView
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginHorizontal="16dp"
-                style="@style/TextViewTitlePink"
+                style="@style/TextViewTitlePurple"
                 android:text="@string/latitude"/>
 
             <EditText
@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginHorizontal="16dp"
-                style="@style/TextViewTitlePink"
+                style="@style/TextViewTitlePurple"
                 android:text="@string/longitude"/>
 
             <EditText

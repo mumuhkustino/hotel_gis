@@ -42,7 +42,7 @@ class AddEditHotelActivity : AppCompatActivity() {
                 edtHotelLatitude.text.toString(),
                 edtHotelLongitude.text.toString()
             )
-            TODO("PUSH HOTEL DATA TO FIREBASE")
+//            TODO("PUSH HOTEL DATA TO FIREBASE")
         }
     }
 
