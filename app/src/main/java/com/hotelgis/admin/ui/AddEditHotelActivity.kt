@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.hotelgis.R
 import com.hotelgis.model.Hotel
+import com.hotelgis.model.Room
 import kotlinx.android.synthetic.main.activity_add_edit_hotel.*
 
 class AddEditHotelActivity : AppCompatActivity() {
@@ -34,13 +35,17 @@ class AddEditHotelActivity : AppCompatActivity() {
         }
 
         btnAddDataHotel.setOnClickListener {
+            // DATA DUMMY ROOM
+            var rooms: ArrayList<Room> = ArrayList()
+            rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "imageUrl"))
             val hotel = Hotel(
                 edtHotelName.text.toString(),
                 edtHotelAddress.text.toString(),
                 edtHotelPhone.text.toString(),
                 imgHotel.toString(),
                 edtHotelLatitude.text.toString(),
-                edtHotelLongitude.text.toString()
+                edtHotelLongitude.text.toString(),
+                rooms
             )
 //            TODO("PUSH HOTEL DATA TO FIREBASE")
         }

@@ -12,6 +12,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val btnLoginUser = findViewById(R.id.btn_login_user) as Button
+        btnLoginUser.setOnClickListener{
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         val btnLoginAdmin = findViewById(R.id.btn_login_admin) as Button
         btnLoginAdmin.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

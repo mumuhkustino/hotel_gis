@@ -13,11 +13,13 @@ import com.hotelgis.admin.ui.AddEditHotelActivity
 import com.hotelgis.admin.ui.AddEditRoomActivity
 import com.hotelgis.admin.ui.DetailHotelActivity
 import com.hotelgis.model.Hotel
+import com.hotelgis.model.Room
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ListHotelAdapter.OnItemClickCallback {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    ListHotelAdapter.OnItemClickCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +28,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toolbar.title = "Dashboard Admin"
         setSupportActionBar(toolbar)
 
-        val toggle = ActionBarDrawerToggle(this, drawerLayout,
-            toolbar, 0, 0)
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout,
+            toolbar, 0, 0
+        )
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -43,28 +47,73 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun loadHotel(): List<Hotel> {
+        //DATA DUMMY ROOM
+        var rooms: ArrayList<Room> = ArrayList()
+        rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "imageUrl"))
         return mutableListOf(
-            Hotel("Hotel Hilton Bandung",
+            Hotel(
+                "Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0"),
-            Hotel("Hotel Hilton Bandung",
+                "+62 87878787878",
+                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+                "0.0",
+                "0.0",
+                rooms
+            ),
+            Hotel(
+                "Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0"),
-            Hotel("Hotel Hilton Bandung",
+                "+62 87878787878",
+                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+                "0.0",
+                "0.0",
+                rooms
+            ),
+            Hotel(
+                "Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0"),
-            Hotel("Hotel Hilton Bandung",
+                "+62 87878787878",
+                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+                "0.0",
+                "0.0",
+                rooms
+            ),
+            Hotel(
+                "Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0"),
-            Hotel("Hotel Hilton Bandung",
+                "+62 87878787878",
+                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+                "0.0",
+                "0.0",
+                rooms
+            ),
+            Hotel(
+                "Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0"),
-            Hotel("Hotel Hilton Bandung",
+                "+62 87878787878",
+                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+                "0.0",
+                "0.0",
+                rooms
+            ),
+            Hotel(
+                "Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0"),
-            Hotel("Hotel Hilton Bandung",
+                "+62 87878787878",
+                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+                "0.0",
+                "0.0",
+                rooms
+            ),
+            Hotel(
+                "Hotel Hilton Bandung",
                 "Jl. Raya ABCD EFGH No. 128, Kota Bandung",
-                "+62 87878787878", "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png", "0.0", "0.0")
+                "+62 87878787878",
+                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+                "0.0",
+                "0.0",
+                rooms
+            )
         )
     }
 

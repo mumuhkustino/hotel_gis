@@ -51,5 +51,7 @@
     <string-array name="list_hotel_name">
         <item>Hotel Hilton Bandung</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
+    <string name="daftar_kamar">Daftar Kamar</string>
 
 </resources>
