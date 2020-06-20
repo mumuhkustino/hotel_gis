@@ -66,7 +66,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         var bounds: LatLngBounds = builder.build()
         var padding = 40 // offset from edges of the map in pixels
         var cu: CameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-//        mMap.animateCamera(cu)
+        mMap.setOnMapLoadedCallback {
+            mMap.animateCamera(cu)
+        }
         mMap.setOnMarkerClickListener(this)
 
     }
