@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "102627083565",
+    "firebase_url": "https://hotel-gis.firebaseio.com",
+    "project_id": "hotel-gis",
+    "storage_bucket": "hotel-gis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102627083565:android:d130c53e92c37a5a8f3fa4",
+        "android_client_info": {
+          "package_name": "com.hotelgis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102627083565-kgs1unb7mqglvjmknf4pq01svu1ldshk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcUYx7kw1gWPW--tlWPQ4430pj8nN3Q34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102627083565-kgs1unb7mqglvjmknf4pq01svu1ldshk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
