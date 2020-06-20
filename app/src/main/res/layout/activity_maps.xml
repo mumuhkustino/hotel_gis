@@ -22,9 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="20dp">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -37,7 +35,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="16dp">
 
             <ImageView
                 android:id="@+id/img_hotel"
@@ -122,22 +121,22 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"/>
 
         <TextView
             style="@style/TextViewTitlePurple"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/daftar_kamar" />
+            android:text="@string/daftar_kamar"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_room_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp" />
+            tools:listitem="@layout/item_list_room"/>
     </LinearLayout>
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
