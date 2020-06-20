@@ -1,142 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    app:umanoPanelHeight="190dp"
-    app:umanoScrollableView="@id/recyclerview_room_list"
-    app:umanoShadowHeight="4dp"
-    tools:context=".MapsActivity">
+    android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MapsActivity" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="bottom"
+        app:umanoPanelHeight="190dp"
+        app:umanoScrollableView="@id/recyclerview_room_list"
+        app:umanoShadowHeight="4dp"
+        tools:context=".MapsActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="2dp"
-            android:src="@drawable/ic_drag_handle"
-            android:tint="@android:color/darker_gray" />
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MapsActivity" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="16dp">
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/img_hotel"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_weight="0.4"
-                android:contentDescription="@string/hotel_image"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/ic_launcher_background" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="2dp"
+                android:src="@drawable/ic_drag_handle"
+                android:tint="@android:color/darker_gray" />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.6"
-                android:orientation="vertical"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="8dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_hotel_name"
-                    style="@style/TextViewTitlePurple"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/hotel_name" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="8dp"
+                <ImageView
+                    android:id="@+id/img_hotel"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
                     android:layout_weight="0.4"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:contentDescription="@string/home_image"
-                        android:src="@drawable/ic_home_purple"
-                        tools:src="@drawable/ic_home_purple" />
-
-                    <TextView
-                        android:id="@+id/tv_hotel_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:maxLines="3"
-                        android:textColor="@color/colorLightBlack"
-                        android:text="@string/hotel_address"/>
-
-                </LinearLayout>
+                    android:contentDescription="@string/hotel_image"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/ic_launcher_background" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_weight="0.3"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:contentDescription="@string/phone_image"
-                        android:src="@drawable/ic_phone_purple"
-                        tools:src="@drawable/ic_phone_purple" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="8dp">
 
                     <TextView
-                        android:id="@+id/tv_hotel_phone"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv_hotel_name"
+                        style="@style/TextViewTitlePurple"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLines="3"
-                        android:textColor="@color/colorLightBlack"
-                        android:text="@string/hotel_phone" />
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/hotel_name" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.4"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:contentDescription="@string/home_image"
+                            android:src="@drawable/ic_home_purple"
+                            tools:src="@drawable/ic_home_purple" />
+
+                        <TextView
+                            android:id="@+id/tv_hotel_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="3"
+                            android:text="@string/hotel_address"
+                            android:textColor="@color/colorLightBlack" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_weight="0.3"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:contentDescription="@string/phone_image"
+                            android:src="@drawable/ic_phone_purple"
+                            tools:src="@drawable/ic_phone_purple" />
+
+                        <TextView
+                            android:id="@+id/tv_hotel_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="3"
+                            android:text="@string/hotel_phone"
+                            android:textColor="@color/colorLightBlack" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                style="@style/TextViewTitlePurple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/daftar_kamar" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_room_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_list_room" />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"/>
-
-        <TextView
-            style="@style/TextViewTitlePurple"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/daftar_kamar"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="8dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_room_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_list_room"/>
-    </LinearLayout>
-
-</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_logout"
+        android:layout_marginEnd="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:backgroundTint="@color/colorPurple"
+        android:src="@drawable/ic_add_white"
+        android:tint="@android:color/white"/>
+</RelativeLayout>

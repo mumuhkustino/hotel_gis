@@ -1,5 +1,6 @@
 package com.hotelgis
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +15,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.hotelgis.admin.adapter.ListRoomAdapter
+import com.hotelgis.admin.adapter.ListRoomUserAdapter
 import com.hotelgis.model.Hotel
 import com.hotelgis.model.Room
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
@@ -41,6 +45,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         tvHotelAddress = findViewById(R.id.tv_hotel_address)
         tvHotelPhone = findViewById(R.id.tv_hotel_phone)
         imgHotel = findViewById(R.id.img_hotel)
+
+        fab_logout.setOnClickListener {
+            logoutUser()
+        }
     }
 
     /**
@@ -81,14 +89,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         Glide.with(baseContext)
             .load(hotel.image)
             .error(R.drawable.ic_launcher_background)
-            .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(20, 0, RoundedCornersTransformation.CornerType.ALL)))
+            .apply(
+                RequestOptions.bitmapTransform(
+                    RoundedCornersTransformation(
+                        20,
+                        0,
+                        RoundedCornersTransformation.CornerType.ALL
+                    )
+                )
+            )
             .into(imgHotel)
 
         recyclerview_room_list.layoutManager = LinearLayoutManager(this)
 
-        val listRoomAdapter = ListRoomAdapter()
-        listRoomAdapter.listRoom = hotel.rooms
-        recyclerview_room_list.adapter = listRoomAdapter
+        val listRoomUserAdapter = ListRoomUserAdapter()
+        listRoomUserAdapter.listRoom = hotel.rooms
+        recyclerview_room_list.adapter = listRoomUserAdapter
         return false
     }
 
@@ -131,5 +147,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             )
         )
         return hotels
+    }
+
+    fun logoutUser() {
+        Firebase.auth.signOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
