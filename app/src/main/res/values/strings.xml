@@ -53,5 +53,6 @@
     </string-array>
     <string name="title_activity_maps">Map</string>
     <string name="daftar_kamar">Daftar Kamar</string>
+    <string name="email_colon">Email :</string>
 
 </resources>

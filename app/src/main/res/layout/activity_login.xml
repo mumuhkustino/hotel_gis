@@ -28,14 +28,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="@string/username_colon" />
+        android:text="@string/email_colon" />
 
     <EditText
+        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:backgroundTint="@color/colorPurple"
-        android:hint="@string/username"
+        android:hint="@string/user_email"
+        android:inputType="textEmailAddress"
         android:textCursorDrawable="@color/colorPurple"
         android:textSize="12sp" />
 
@@ -46,10 +48,12 @@
         android:text="@string/password_colon" />
 
     <EditText
+        android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:textSize="12sp" />
 
     <Button
