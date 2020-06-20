@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,7 +47,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         tvHotelPhone = findViewById(R.id.tv_hotel_phone)
         imgHotel = findViewById(R.id.img_hotel)
 
-        fab_logout.setOnClickListener {
+        btn_more.setOnClickListener {
+            if (btn_logout.visibility == View.VISIBLE) {
+                btn_logout.visibility = View.GONE
+            } else {
+                btn_logout.visibility = View.VISIBLE
+            }
+        }
+        btn_logout.setOnClickListener {
             logoutUser()
         }
     }

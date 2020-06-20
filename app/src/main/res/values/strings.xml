@@ -55,5 +55,6 @@
     <string name="daftar_kamar">Daftar Kamar</string>
     <string name="email_colon">Email :</string>
     <string name="pesan_kamar">Pesan Kamar</string>
+    <string name="logout">Logout</string>
 
 </resources>
