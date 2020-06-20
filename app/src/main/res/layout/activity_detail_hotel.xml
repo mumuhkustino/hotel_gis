@@ -22,134 +22,56 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.59">
-        <LinearLayout
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginHorizontal="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <ImageView
-                    android:id="@+id/imgHotel"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher_background"
-                    android:contentDescription="@string/hotel_image"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/tvHotelName"
-                android:layout_marginVertical="8dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/TextViewTitlePurple"
-                tools:text="Hotel Hilton Bandung"/>
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="8dp"
-                android:layout_marginHorizontal="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/home_image"
-                    android:layout_marginEnd="4dp"
-                    android:src="@drawable/ic_home_purple"
-                    tools:src="@drawable/ic_home_purple"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="16sp"
-                    android:text="@string/address"
-                    style="@style/TextViewSecondTitlePurple"
-                    tools:text="@string/address"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvHotelAddress"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginHorizontal="16dp"
-                android:textColor="@color/colorLightBlack"
-                tools:text="Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung"/>
-
-            <LinearLayout
-                android:baselineAligned="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp"
-                android:layout_marginHorizontal="16dp">
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="0.35">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
+                        android:layout_height="170dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginHorizontal="16dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/imgHotel"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:contentDescription="@string/home_image"
-                            android:layout_marginEnd="8dp"
-                            android:src="@drawable/ic_phone_purple"
-                            tools:src="@drawable/ic_phone_purple"/>
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_launcher_background"
+                            android:contentDescription="@string/hotel_image"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:textSize="16sp"
-                            android:text="@string/phone"
-                            style="@style/TextViewSecondTitlePurple"
-                            tools:text="@string/phone"/>
-
-                    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/tvHotelPhone"
+                        android:id="@+id/tvHotelName"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginHorizontal="16dp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textColor="@color/colorLightBlack"
-                        tools:text="+62 87878787878"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="0.65">
+                        android:layout_height="wrap_content"
+                        style="@style/TextViewTitlePurple"
+                        tools:text="Hotel Hilton Bandung"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="8dp"
+                        android:layout_marginHorizontal="16dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -157,73 +79,160 @@
                             android:layout_height="match_parent"
                             android:contentDescription="@string/home_image"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_location_purple"
-                            tools:src="@drawable/ic_location_purple"/>
+                            android:src="@drawable/ic_home_purple"
+                            tools:src="@drawable/ic_home_purple"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:textSize="16sp"
-                            android:text="@string/location"
+                            android:text="@string/address"
                             style="@style/TextViewSecondTitlePurple"
-                            tools:text="@string/location"/>
+                            tools:text="@string/address"/>
 
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/tvHotelLocation"
+                        android:id="@+id/tvHotelAddress"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginHorizontal="16dp"
                         android:textColor="@color/colorLightBlack"
-                        tools:text="7.182013817 , -123.0123810238012"/>
+                        tools:text="Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung"/>
+
+                    <LinearLayout
+                        android:baselineAligned="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginHorizontal="16dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:contentDescription="@string/home_image"
+                                    android:layout_marginEnd="8dp"
+                                    android:src="@drawable/ic_phone_purple"
+                                    tools:src="@drawable/ic_phone_purple"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/phone"
+                                    style="@style/TextViewSecondTitlePurple"
+                                    tools:text="@string/phone"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvHotelPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/colorLightBlack"
+                                tools:text="+62 87878787878"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:contentDescription="@string/home_image"
+                                    android:layout_marginEnd="4dp"
+                                    android:src="@drawable/ic_location_purple"
+                                    tools:src="@drawable/ic_location_purple"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/location"
+                                    style="@style/TextViewSecondTitlePurple"
+                                    tools:text="@string/location"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvHotelLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/colorLightBlack"
+                                tools:text="7.182013817 , -123.0123810238012"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnEditHotel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="@string/edit_data_hotel"
+                        style="@style/ButtonBlue"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.39"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/list_room"
+                        style="@style/TextViewTitlePurple"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewRoom"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scrollbars="vertical"
+                            tools:listitem="@layout/item_list_room"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnEditHotel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="@string/edit_data_hotel"
-                style="@style/ButtonBlue"/>
-
-        </LinearLayout>
-    </ScrollView>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:layout_gravity="center"
-        android:background="@android:color/darker_gray"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.39"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_marginHorizontal="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/list_room"
-            style="@style/TextViewTitlePurple"/>
+        </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewRoom"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                tools:listitem="@layout/item_list_room"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabAddRoom"
@@ -238,6 +247,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

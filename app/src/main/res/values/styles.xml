@@ -52,7 +52,7 @@
     <style name="TextViewSecondTitlePurple" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/colorPurple</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextViewTitlePink" parent="Widget.AppCompat.TextView">
@@ -64,7 +64,7 @@
     <style name="TextViewSecondTitlePink" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/colorPink</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextViewPink" parent="android:Widget.TextView">
