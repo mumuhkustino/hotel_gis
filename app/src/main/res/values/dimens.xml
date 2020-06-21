@@ -14,5 +14,6 @@
     <dimen name="card_horizontal_margin">8dp</dimen>
     <dimen name="layout_vertical_margin">8dp</dimen>
     <dimen name="sliding_layout_height">190dp</dimen>
+    <dimen name="sliding_layout_height_hide">0dp</dimen>
     <dimen name="design_fab_image_size" tools:override="true">32dp</dimen>
 </resources>

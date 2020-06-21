@@ -49,6 +49,12 @@ class DetailHotelActivity : AppCompatActivity() {
                 intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel.name)
                 startActivity(intentToAddRoom)
             }
+
+            btnEditHotel.setOnClickListener {
+                val intentToEditHotel = Intent(baseContext, AddEditHotelActivity::class.java)
+                intentToEditHotel.putExtra(AddEditHotelActivity.EXTRA_HOTEL, hotel)
+                startActivity(intentToEditHotel)
+            }
         }
 
         recyclerViewRoom.layoutManager = LinearLayoutManager(this)
