@@ -56,5 +56,6 @@
     <string name="email_colon">Email :</string>
     <string name="pesan_kamar">Pesan Kamar</string>
     <string name="logout">Logout</string>
+    <string name="tekan_marker_pada_peta_untuk_melihat_hotel">Tekan Marker Pada Peta Untuk Melihat Hotel</string>
 
 </resources>
