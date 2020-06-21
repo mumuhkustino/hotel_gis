@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val listHotelAdapter = ListHotelAdapter(this)
         listHotelAdapter.listHotel = loadHotel()
         recyclerViewHotel.adapter = listHotelAdapter
+
+        fabAddHotel.setOnClickListener {
+            val intentToDetail = Intent(baseContext, AddEditHotelActivity::class.java)
+            startActivity(intentToDetail)
+        }
     }
 
     private fun loadHotel(): List<Hotel> {
