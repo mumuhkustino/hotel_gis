@@ -62,5 +62,13 @@
     <string name="nama_pemesan">Nama Pemesan</string>
     <string name="no_telepon">No Telepon</string>
     <string name="date_hint">../../...</string>
+    <string name="konfirmasi_pemesanan">Konfirmasi Pemesanan</string>
+    <string name="silahkan_lakukan_review">Silahkan lakukan review pesanan terlebih dahulu sebelum melanjutkan ke pembayaran</string>
+    <string name="detail">Detail</string>
+    <string name="detail_pesanan">Detail Pesanan</string>
+    <string name="data_pemesan">Data Pemesan</string>
+    <string name="detail_harga">Detail Harga</string>
+    <string name="total">Total</string>
+    <string name="pembayaran">Pembayaran</string>
 
 </resources>

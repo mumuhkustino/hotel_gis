@@ -1,6 +1,7 @@
 package com.hotelgis
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -37,7 +38,10 @@ class PesanKamarActivity : AppCompatActivity() {
         }
 
         btn_pesan_kamar.setOnClickListener {
-            //TODO : intent ke konfirmasi pemesanan
+            val intent = Intent(this, KonfirmasiPemesananActivity::class.java)
+            intent.putExtra("","")
+            //TODO putextra
+            startActivity(intent)
         }
     }
 

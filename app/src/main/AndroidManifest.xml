@@ -19,8 +19,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".KonfirmasiPemesananActivity"
+            android:label="@string/konfirmasi_pemesanan"></activity>
+        <activity
             android:name=".PesanKamarActivity"
-            android:label="@string/pesan_kamar"></activity>
+            android:label="@string/pesan_kamar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
