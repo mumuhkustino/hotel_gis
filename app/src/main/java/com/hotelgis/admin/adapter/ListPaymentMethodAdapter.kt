@@ -53,10 +53,9 @@ class ListPaymentMethodAdapter(private val onItemClickCallback: OnItemClickCallb
                     .error(R.drawable.ic_launcher_background)
                     .into(viewHolderContent.imgPaymentMethod)
                 viewHolderContent.tvPaymentMethod.text = listMethodPayment[position].title
+                viewHolderContent.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMethodPayment[viewHolderContent.adapterPosition]) }
             }
         }
-
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMethodPayment[holder.adapterPosition]) }
     }
 
     override fun getItemViewType(position: Int): Int = listMethodPayment[position].type
