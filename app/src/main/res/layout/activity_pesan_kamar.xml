@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".PesanKamarActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tanggal"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_tanggal"
+        style="@style/EditTextStylePink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:focusable="false"
+        android:hint="@string/date_hint"
+        android:inputType="none" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/jumlah_kamar"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_jumlah_kamar"
+        style="@style/EditTextStylePink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/jumlah_kamar"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/nama_pemesan"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_nama_pemesan"
+        style="@style/EditTextStylePink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/nama_pemesan"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/no_telepon"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_no_telepon"
+        style="@style/EditTextStylePink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/no_telepon"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/btn_pesan_kamar"
+        style="@style/ButtonPink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/pesan_kamar"
+        android:textAllCaps="false" />
+
+</LinearLayout>

@@ -57,5 +57,10 @@
     <string name="pesan_kamar">Pesan Kamar</string>
     <string name="logout">Logout</string>
     <string name="tekan_marker_pada_peta_untuk_melihat_hotel">Tekan Marker Pada Peta Untuk Melihat Hotel</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="jumlah_kamar">Jumlah Kamar</string>
+    <string name="nama_pemesan">Nama Pemesan</string>
+    <string name="no_telepon">No Telepon</string>
+    <string name="date_hint">../../...</string>
 
 </resources>
