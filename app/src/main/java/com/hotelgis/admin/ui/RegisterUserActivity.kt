@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hotelgis.LoginActivity
 import com.hotelgis.MapsActivity
@@ -17,12 +19,15 @@ import kotlinx.android.synthetic.main.activity_register_user.*
 
 class RegisterUserActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_user)
         // Initialize Firebase Auth
         auth = Firebase.auth
+        // Access a Cloud Firestore instance from your Activity
+        db = Firebase.firestore
 
         toolbar.title = "Register User"
         setSupportActionBar(toolbar)
@@ -41,6 +46,7 @@ class RegisterUserActivity : AppCompatActivity() {
                     Log.d("d", "createUserWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
+                    addUserToFireStore(email, password, user?.uid.toString())
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("d", "createUserWithEmail:failure", task.exception)
@@ -52,6 +58,27 @@ class RegisterUserActivity : AppCompatActivity() {
                 }
 
                 // ...
+            }
+    }
+
+    fun addUserToFireStore(email: String, password: String, uId: String) {
+        // Create a new user with a first and last name
+        val user = hashMapOf(
+            "uid" to uId,
+            "username" to edtUserName.text.toString(),
+            "email" to email,
+            "no_tlp" to edtUserNoTelp.text.toString(),
+            "password" to password
+        )
+
+        // Add a new document with a generated ID
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d("d", "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w("d", "Error adding document", e)
             }
     }
 
