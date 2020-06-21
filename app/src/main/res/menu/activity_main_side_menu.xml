@@ -16,6 +16,10 @@
             android:id="@+id/addRoom"
             android:icon="@drawable/ic_add_circle_white"
             android:title="@string/add_room"/>
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_baseline_exit_to_app"
+            android:title="@string/logout"/>
     </group>
 
 </menu>

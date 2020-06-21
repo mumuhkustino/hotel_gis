@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.hotelgis.admin.adapter.ListHotelAdapter
 import com.hotelgis.admin.ui.AddEditHotelActivity
 import com.hotelgis.admin.ui.AddEditRoomActivity
@@ -126,6 +128,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.addRoom -> {
                 val intentToDetail = Intent(baseContext, AddEditRoomActivity::class.java)
                 startActivity(intentToDetail)
+            }
+            R.id.logout -> {
+                Firebase.auth.signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
