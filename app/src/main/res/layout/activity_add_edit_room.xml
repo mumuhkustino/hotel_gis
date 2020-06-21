@@ -41,39 +41,6 @@
                 style="@style/TextViewTitlePurple"
                 android:text="@string/place_room"/>
 
-<!--            <RelativeLayout-->
-<!--                android:id="@+id/spinnerLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:background="@drawable/border_purple"-->
-<!--                android:layout_marginHorizontal="16dp"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <Spinner-->
-<!--                    android:id="@+id/codeSpinner"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="36dp"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:paddingVertical="8dp"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:background="@drawable/border_purple"-->
-<!--                    android:gravity="center"-->
-<!--                    android:entries="@array/list_hotel_name"-->
-<!--                    android:spinnerMode="dropdown"/>-->
-
-<!--                <ImageButton-->
-<!--                    android:layout_width="36dp"-->
-<!--                    android:layout_height="36dp"-->
-<!--                    android:layout_alignParentEnd="true"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:background="@color/colorPink"-->
-<!--                    android:src="@drawable/ic_arrow_down_white" />-->
-
-<!--            </RelativeLayout>-->
-
             <com.skydoves.powerspinner.PowerSpinnerView
                 android:id="@+id/spinnerView"
                 android:layout_width="match_parent"
@@ -247,6 +214,26 @@
                 </FrameLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginHorizontal="16dp"
+                style="@style/TextViewTitlePurple"
+                android:text="@string/roomfacility"/>
+
+            <EditText
+                android:id="@+id/edtRoomFacility"
+                android:autofillHints="@string/roomfacility"
+                android:hint="@string/roomfacility"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="16dp"
+                style="@style/EditTextStylePurple"/>
 
             <Button
                 android:id="@+id/btnAddDataRoom"

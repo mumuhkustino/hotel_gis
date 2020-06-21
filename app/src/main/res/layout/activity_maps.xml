@@ -100,7 +100,7 @@
 
                 <TextView
                     android:id="@+id/tv_hotel_name"
-                    style="@style/TextViewTitlePurple"
+                    style="@style/TextViewTitlePink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -118,8 +118,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
                         android:contentDescription="@string/home_image"
-                        android:src="@drawable/ic_home_purple"
-                        tools:src="@drawable/ic_home_purple" />
+                        android:src="@drawable/ic_home_pink"
+                        tools:src="@drawable/ic_home_pink" />
 
                     <TextView
                         android:id="@+id/tv_hotel_address"
@@ -143,8 +143,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
                         android:contentDescription="@string/phone_image"
-                        android:src="@drawable/ic_phone_purple"
-                        tools:src="@drawable/ic_phone_purple" />
+                        android:src="@drawable/ic_phone_pink"
+                        tools:src="@drawable/ic_phone_pink" />
 
                     <TextView
                         android:id="@+id/tv_hotel_phone"
@@ -168,7 +168,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
-            style="@style/TextViewTitlePurple"
+            style="@style/TextViewTitlePink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"

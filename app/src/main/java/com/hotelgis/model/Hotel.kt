@@ -11,5 +11,5 @@ data class Hotel(
     var image: String,
     var lat: String,
     var long: String,
-    var rooms: List<Room>
+    var rooms: ArrayList<Room>
 ) : Parcelable

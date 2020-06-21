@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun loadHotel(): List<Hotel> {
         //DATA DUMMY ROOM
         var rooms: ArrayList<Room> = ArrayList()
-        rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "imageUrl"))
+        rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja","imageUrl"))
         return mutableListOf(
             Hotel(
                 "Hotel Hilton Bandung",
