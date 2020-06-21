@@ -215,6 +215,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_room_cost"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"

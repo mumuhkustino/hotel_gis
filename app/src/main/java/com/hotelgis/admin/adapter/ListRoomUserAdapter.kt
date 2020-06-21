@@ -46,7 +46,11 @@ class ListRoomUserAdapter : RecyclerView.Adapter<ListRoomUserAdapter.ViewHolder>
         holder.tvRoomCost.text = room.cost.toString()
 
         holder.btnPesanKamar.setOnClickListener {
-            val intent = Intent(context, PesanKamarActivity::class.java)
+            val intent = Intent(context, PesanKamarActivity::class.java).apply {
+                putExtra("ROOM_CODE", room.code)
+                putExtra("ROOM_NAME", room.name)
+                putExtra("ROOM_COST", room.cost)
+            }
             context.startActivity(intent)
         }
 

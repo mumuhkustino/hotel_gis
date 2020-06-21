@@ -38,10 +38,16 @@ class PesanKamarActivity : AppCompatActivity() {
         }
 
         btn_pesan_kamar.setOnClickListener {
-            val intent = Intent(this, KonfirmasiPemesananActivity::class.java)
-            intent.putExtra("","")
-            //TODO putextra
-            startActivity(intent)
+            val newIntent = Intent(this, KonfirmasiPemesananActivity::class.java).apply{
+                putExtra("ROOM_CODE",intent.getStringExtra("ROOM_CODE"))
+                putExtra("ROOM_NAME",intent.getStringExtra("ROOM_NAME"))
+                putExtra("ROOM_COST",intent.getIntExtra("ROOM_COST", 0))
+                putExtra("PESAN_TANGGAL",et_tanggal.text.toString())
+                putExtra("PESAN_JUMLAH_KAMAR",et_jumlah_kamar.text.toString().toInt())
+                putExtra("PESAN_NAMA_PEMESAN",et_nama_pemesan.text.toString())
+                putExtra("PESAN_NO_TELP",et_no_telepon.text.toString())
+            }
+            startActivity(newIntent)
         }
     }
 
