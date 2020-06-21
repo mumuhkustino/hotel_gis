@@ -6,21 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.hotelgis.LoginActivity
-import com.hotelgis.PesanKamarActivity
 import com.hotelgis.R
+import com.hotelgis.admin.ui.DetailRoomActivity
 import com.hotelgis.model.Room
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 class ListRoomUserAdapter : RecyclerView.Adapter<ListRoomUserAdapter.ViewHolder>() {
     private lateinit var context: Context
-    var listRoom: List<Room> = arrayListOf()
+    var listRoom: ArrayList<Room> = arrayListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -45,17 +43,12 @@ class ListRoomUserAdapter : RecyclerView.Adapter<ListRoomUserAdapter.ViewHolder>
         holder.tvRoomQuantity.text = room.quantity.toString()
         holder.tvRoomCost.text = room.cost.toString()
 
-        holder.btnPesanKamar.setOnClickListener {
-            val intent = Intent(context, PesanKamarActivity::class.java).apply {
-                putExtra("ROOM_CODE", room.code)
-                putExtra("ROOM_NAME", room.name)
-                putExtra("ROOM_COST", room.cost)
+        holder.btnLihatKamar.setOnClickListener {
+            val intent = Intent(context, DetailRoomActivity::class.java).apply {
+                putExtra(DetailRoomActivity.EXTRA_DETAIL_ROOM, room)
+                putParcelableArrayListExtra(DetailRoomActivity.EXTRA_LIST_ROOM, listRoom)
             }
             context.startActivity(intent)
-        }
-
-        holder.btnLocation.setOnClickListener {
-
         }
 
         Glide.with(holder.itemView.context)
@@ -79,7 +72,6 @@ class ListRoomUserAdapter : RecyclerView.Adapter<ListRoomUserAdapter.ViewHolder>
         var tvRoomQuantity: TextView = itemView.findViewById(R.id.tvRoomQuantity)
         var tvRoomCost: TextView = itemView.findViewById(R.id.tvRoomCost)
         var imgRoom: ImageView = itemView.findViewById(R.id.imgRoom)
-        var btnPesanKamar: Button = itemView.findViewById(R.id.btnPesanKamar)
-        var btnLocation: ImageButton = itemView.findViewById(R.id.imgBtnLocation)
+        var btnLihatKamar: Button = itemView.findViewById(R.id.btnLihatKamar)
     }
 }

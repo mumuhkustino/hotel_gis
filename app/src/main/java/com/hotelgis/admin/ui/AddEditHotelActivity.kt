@@ -42,6 +42,7 @@ class AddEditHotelActivity : AppCompatActivity() {
                 .into(imgHotel)
             edtHotelLatitude.text = Editable.Factory.getInstance().newEditable(hotel.lat)
             edtHotelLongitude.text = Editable.Factory.getInstance().newEditable(hotel.long)
+            btnAddDataHotel.text = resources.getString(R.string.edit_data_hotel)
         }
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -58,7 +59,7 @@ class AddEditHotelActivity : AppCompatActivity() {
         btnAddDataHotel.setOnClickListener {
             // DATA DUMMY ROOM
             var rooms: ArrayList<Room> = ArrayList()
-            rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "imageUrl"))
+            rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja", "imageUrl"))
             val hotel = Hotel(
                 edtHotelName.text.toString(),
                 edtHotelAddress.text.toString(),

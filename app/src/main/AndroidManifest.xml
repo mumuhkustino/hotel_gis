@@ -18,12 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".admin.ui.DetailRoomActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".admin.ui.RoomPaymentActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".KonfirmasiPemesananActivity"
-            android:label="@string/konfirmasi_pemesanan"/>
+            android:label="@string/konfirmasi_pemesanan" />
         <activity
             android:name=".PesanKamarActivity"
             android:label="@string/pesan_kamar" />

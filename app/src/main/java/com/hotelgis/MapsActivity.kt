@@ -59,6 +59,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
         sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
     }
 
+    override fun onResume() {
+        super.onResume()
+        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+    }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -133,11 +138,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
     }
 
     fun getHotels(): ArrayList<Hotel> {
-        var hotels: ArrayList<Hotel> = ArrayList()
-        var rooms: ArrayList<Room> = ArrayList()
-        rooms.add(Room("Special Suite", "CODE132", "Room Name", 2, 200000, "imageUrl"))
-        rooms.add(Room("Ordinary", "CODE133", "Room Name", 1, 100000, "imageUrl"))
-        hotels.add(
+        return arrayListOf(
             Hotel(
                 "Mumuh Hotel",
                 "Jalan Tasikmalaya",
@@ -145,10 +146,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
                 "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg",
                 "0",
                 "10",
-                rooms
-            )
-        )
-        hotels.add(
+                arrayListOf(
+                    Room("Mumuh Hotel",
+                        "CODE132",
+                        "Special Suite",
+                        2,
+                        200000,
+                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
+                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg"),
+                    Room("Mumuh Hotel",
+                        "CODE133",
+                        "Ordinary",
+                        1,
+                        100000,
+                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
+                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg")
+                )
+            ),
             Hotel(
                 "Gawa Hotel",
                 "Jalan Kinagara",
@@ -156,10 +170,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
                 "https://www.hrs.com/en/media/image/ca/18/bf/Hotel_Equatorial_Ho_Chi_Minh_City-Ho-Chi-Minh-Stadt-Aussenansicht-2-62178_600x600.jpg",
                 "0",
                 "20",
-                rooms
-            )
-        )
-        hotels.add(
+                arrayListOf(
+                    Room("Gawa Hotel",
+                        "CODE132",
+                        "Special Suite",
+                        2,
+                        200000,
+                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
+                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg"),
+                    Room("Gawa Hotel",
+                        "CODE133",
+                        "Ordinary",
+                        1,
+                        100000,
+                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
+                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg")
+                )
+            ),
             Hotel(
                 "Pajo Hotel",
                 "Jalan Paledang",
@@ -167,10 +194,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
                 "https://www.hrs.com/en/media/image/07/g0/2d/Sure_Hotel_by_Best_Western_Center-Goeteborg-Aussenansicht-2-375260_600x600.jpg",
                 "0",
                 "30",
-                rooms
+                arrayListOf(
+                    Room("Pajo Hotel",
+                        "CODE132",
+                        "Special Suite",
+                        2,
+                        200000,
+                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
+                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg"),
+                    Room("Pajo Hotel",
+                        "CODE133",
+                        "Ordinary",
+                        1,
+                        100000,
+                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
+                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg")
+                )
             )
         )
-        return hotels
     }
 
     fun logoutUser() {

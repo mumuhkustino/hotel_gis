@@ -65,7 +65,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewTitlePurple"
+                        style="@style/TextViewTitlePink"
                         tools:text="Hotel Hilton Bandung"/>
 
                     <LinearLayout
@@ -80,8 +80,8 @@
                             android:layout_height="match_parent"
                             android:contentDescription="@string/home_image"
                             android:layout_marginEnd="4dp"
-                            android:src="@drawable/ic_home_purple"
-                            tools:src="@drawable/ic_home_purple"/>
+                            android:src="@drawable/ic_home_pink"
+                            tools:src="@drawable/ic_home_pink"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -126,8 +126,8 @@
                                     android:layout_height="match_parent"
                                     android:contentDescription="@string/home_image"
                                     android:layout_marginEnd="8dp"
-                                    android:src="@drawable/ic_phone_purple"
-                                    tools:src="@drawable/ic_phone_purple"/>
+                                    android:src="@drawable/ic_phone_pink"
+                                    tools:src="@drawable/ic_phone_pink"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -163,8 +163,8 @@
                                     android:layout_height="match_parent"
                                     android:contentDescription="@string/home_image"
                                     android:layout_marginEnd="4dp"
-                                    android:src="@drawable/ic_location_purple"
-                                    tools:src="@drawable/ic_location_purple"/>
+                                    android:src="@drawable/ic_location_pink"
+                                    tools:src="@drawable/ic_location_pink"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -216,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/list_room"
-                        style="@style/TextViewTitlePurple"/>
+                        style="@style/TextViewTitlePink"/>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewRoom"

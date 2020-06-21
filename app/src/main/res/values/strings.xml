@@ -73,5 +73,8 @@
     <string name="detail_harga">Detail Harga</string>
     <string name="total">Total</string>
     <string name="pembayaran">Pembayaran</string>
+    <string name="lihat_kamar">Lihat Kamar</string>
+    <string name="room_facility">Room Facility</string>
+    <string name="roomfacility">Fasilitas</string>
 
 </resources>

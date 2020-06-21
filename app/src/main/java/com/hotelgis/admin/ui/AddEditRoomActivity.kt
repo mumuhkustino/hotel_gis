@@ -41,6 +41,7 @@ class AddEditRoomActivity : AppCompatActivity() {
             edtRoomName.text = Editable.Factory.getInstance().newEditable(room.name)
             edtRoomQuantity.text = Editable.Factory.getInstance().newEditable(room.quantity.toString())
             edtRoomCost.text = Editable.Factory.getInstance().newEditable(room.cost.toString())
+            btnAddDataRoom.text = resources.getString(R.string.edit_data_room)
 
             Glide.with(baseContext)
                 .load(room.image)
@@ -68,6 +69,7 @@ class AddEditRoomActivity : AppCompatActivity() {
                 edtRoomName.text.toString(),
                 edtRoomQuantity.text.toString().toInt(),
                 edtRoomCost.text.toString().toInt(),
+                edtRoomFacility.text.toString(),
                 imgRoom.toString()
             )
             TODO("PUSH ROOM DATA TO FIREBASE")

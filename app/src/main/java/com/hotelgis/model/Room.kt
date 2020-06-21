@@ -10,5 +10,6 @@ data class Room (
     var name:String,
     var quantity:Int,
     var cost:Int,
+    var facility:String,
     var image:String
 ) : Parcelable

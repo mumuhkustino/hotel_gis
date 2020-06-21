@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:orientation="horizontal"
-        android:layout_weight="0.1">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,8 +34,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="16dp"
         app:cardCornerRadius="12dp"
-        app:cardElevation="6dp"
-        android:layout_weight="0.9">
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    style="@style/TextViewTitlePurple"
+                    style="@style/TextViewTitlePink"
                     tools:text="@string/room_name"/>
 
                 <LinearLayout
@@ -114,33 +112,13 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/btnLihatKamar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="4dp">
-
-                    <Button
-                        android:id="@+id/btnPesanKamar"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.7"
-                        android:layout_marginVertical="12dp"
-                        android:layout_marginEnd="6dp"
-                        style="@style/ButtonBlue"
-                        android:text="@string/pesan_kamar"/>
-
-                    <ImageButton
-                        android:id="@+id/imgBtnLocation"
-                        android:contentDescription="@string/add_room"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.3"
-                        android:layout_marginVertical="12dp"
-                        style="@style/ImageButtonBlack"
-                        android:src="@drawable/ic_location_white"/>
-
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="12dp"
+                    style="@style/ButtonBlue"
+                    android:text="@string/lihat_kamar"/>
 
             </LinearLayout>
 

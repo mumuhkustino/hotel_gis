@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -43,10 +42,6 @@ class ListRoomAdapter(private val onItemClickCallback: OnItemClickCallback): Rec
             onItemClickCallback.onItemClicked(listRoom[holder.adapterPosition])
         }
 
-        holder.btnLocation.setOnClickListener {
-
-        }
-
         Glide.with(holder.itemView.context)
             .load(room.image)
             .error(R.drawable.ic_launcher_background)
@@ -61,7 +56,6 @@ class ListRoomAdapter(private val onItemClickCallback: OnItemClickCallback): Rec
         var tvRoomCost: TextView = itemView.findViewById(R.id.tvRoomCost)
         var imgRoom: ImageView = itemView.findViewById(R.id.imgRoom)
         var btnEditRoom: Button = itemView.findViewById(R.id.btnEditRoom)
-        var btnLocation: ImageButton = itemView.findViewById(R.id.imgBtnLocation)
     }
 
     interface OnItemClickCallback {
