@@ -2,17 +2,25 @@ package com.hotelgis.admin.ui
 
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.hotelgis.R
 import com.hotelgis.model.Hotel
 import com.hotelgis.model.Room
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_add_edit_hotel.*
+import kotlinx.android.synthetic.main.activity_add_edit_hotel.toolbar
+import kotlinx.android.synthetic.main.activity_register_user.*
 
 class AddEditHotelActivity : AppCompatActivity() {
+    private val db: FirebaseFirestore = Firebase.firestore
 
     companion object {
         const val EXTRA_HOTEL = "EXTRA_HOTEL"
@@ -38,7 +46,15 @@ class AddEditHotelActivity : AppCompatActivity() {
             Glide.with(baseContext)
                 .load(hotel.image)
                 .error(R.drawable.ic_launcher_background)
-                .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(20, 0, RoundedCornersTransformation.CornerType.ALL)))
+                .apply(
+                    RequestOptions.bitmapTransform(
+                        RoundedCornersTransformation(
+                            20,
+                            0,
+                            RoundedCornersTransformation.CornerType.ALL
+                        )
+                    )
+                )
                 .into(imgHotel)
             edtHotelLatitude.text = Editable.Factory.getInstance().newEditable(hotel.lat)
             edtHotelLongitude.text = Editable.Factory.getInstance().newEditable(hotel.long)
@@ -59,7 +75,17 @@ class AddEditHotelActivity : AppCompatActivity() {
         btnAddDataHotel.setOnClickListener {
             // DATA DUMMY ROOM
             var rooms: ArrayList<Room> = ArrayList()
-            rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja", "imageUrl"))
+            rooms.add(
+                Room(
+                    "Special Place",
+                    "CODE132",
+                    "Room Name",
+                    2,
+                    200000,
+                    "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
+                    "imageUrl"
+                )
+            )
             val hotel = Hotel(
                 edtHotelName.text.toString(),
                 edtHotelAddress.text.toString(),
@@ -70,7 +96,24 @@ class AddEditHotelActivity : AppCompatActivity() {
                 rooms
             )
 //            TODO("PUSH HOTEL DATA TO FIREBASE")
+            addHotelDataToFirestore(hotel)
         }
+    }
+
+    fun addHotelDataToFirestore(hotel: Hotel) {
+        // Add a new document with a generated ID
+        db.collection("hotels")
+            .add(hotel)
+            .addOnSuccessListener { documentReference ->
+                Log.d("d", "DocumentSnapshot added with ID: ${documentReference.id}")
+                Toast.makeText(this,"Hotel has successfully been added",Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            .addOnFailureListener { e ->
+                Log.w("d", "Error adding document", e)
+                Toast.makeText(this,"Failed to add hotel",Toast.LENGTH_SHORT).show()
+                finish()
+            }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
