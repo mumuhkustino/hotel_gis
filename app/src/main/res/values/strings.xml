@@ -56,5 +56,8 @@
     <string name="email_colon">Email :</string>
     <string name="pesan_kamar">Pesan Kamar</string>
     <string name="logout">Logout</string>
+    <string name="pay">Bayar</string>
+    <string name="payment_method">Metode Pembayaran</string>
+    <string name="bill">Total Tagihan</string>
 
 </resources>
