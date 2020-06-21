@@ -14,7 +14,7 @@ import com.hotelgis.R
 import com.hotelgis.model.Room
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class ListRoomAdapter: RecyclerView.Adapter<ListRoomAdapter.ViewHolder>() {
+class ListRoomAdapter(private val onItemClickCallback: OnItemClickCallback): RecyclerView.Adapter<ListRoomAdapter.ViewHolder>() {
 
     var listRoom: List<Room> = arrayListOf()
 
@@ -40,7 +40,7 @@ class ListRoomAdapter: RecyclerView.Adapter<ListRoomAdapter.ViewHolder>() {
         holder.tvRoomCost.text = room.cost.toString()
 
         holder.btnEditRoom.setOnClickListener {
-
+            onItemClickCallback.onItemClicked(listRoom[holder.adapterPosition])
         }
 
         holder.btnLocation.setOnClickListener {
@@ -62,5 +62,9 @@ class ListRoomAdapter: RecyclerView.Adapter<ListRoomAdapter.ViewHolder>() {
         var imgRoom: ImageView = itemView.findViewById(R.id.imgRoom)
         var btnEditRoom: Button = itemView.findViewById(R.id.btnEditRoom)
         var btnLocation: ImageButton = itemView.findViewById(R.id.imgBtnLocation)
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(room: Room)
     }
 }

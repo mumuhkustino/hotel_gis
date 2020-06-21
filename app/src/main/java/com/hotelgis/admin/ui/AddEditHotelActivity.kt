@@ -25,7 +25,7 @@ class AddEditHotelActivity : AppCompatActivity() {
         var hotel: Hotel? = null
 
         if (intent != null) {
-            hotel = intent.getParcelableExtra(DetailHotelActivity.EXTRA_DETAIL_HOTEL)
+            hotel = intent.getParcelableExtra(EXTRA_HOTEL)
         }
 
         toolbar.title = resources.getString(R.string.add_data_hotel)
