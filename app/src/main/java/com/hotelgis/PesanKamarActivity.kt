@@ -35,6 +35,10 @@ class PesanKamarActivity : AppCompatActivity() {
             )
             picker.show()
         }
+
+        btn_pesan_kamar.setOnClickListener {
+            //TODO : intent ke konfirmasi pemesanan
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
