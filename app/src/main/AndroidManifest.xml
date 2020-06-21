@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".admin.ui.RoomPaymentActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".KonfirmasiPemesananActivity"
             android:label="@string/konfirmasi_pemesanan"></activity>

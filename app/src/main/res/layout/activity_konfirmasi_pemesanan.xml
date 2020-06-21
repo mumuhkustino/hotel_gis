@@ -253,6 +253,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/btn_pembayaran"
                 android:layout_marginTop="10dp"
                 style="@style/ButtonPink"
                 android:layout_width="match_parent"

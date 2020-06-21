@@ -1,8 +1,10 @@
 package com.hotelgis
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import com.hotelgis.admin.ui.RoomPaymentActivity
 import kotlinx.android.synthetic.main.activity_konfirmasi_pemesanan.*
 import kotlinx.android.synthetic.main.activity_pesan_kamar.*
 
@@ -28,6 +30,11 @@ class KonfirmasiPemesananActivity : AppCompatActivity() {
         tv_kamar_n_hotel.text = "$roomName - "
         tv_jumlah_kamar_harga.text = "(Jumlah: $pesanJumlahKamar Kamar)"
         tv_harga_total.text = "Rp ${pesanJumlahKamar * roomCost}"
+
+        btn_pembayaran.setOnClickListener {
+            val intent = Intent(this, RoomPaymentActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
