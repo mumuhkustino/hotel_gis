@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.maps.*
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
@@ -23,7 +24,7 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_maps.*
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var tvHotelName: TextView
@@ -55,7 +56,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             logoutUser()
         }
 
-        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
+        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
     }
 
     /**
@@ -85,15 +86,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             mMap.animateCamera(cu)
         }
         mMap.setOnMarkerClickListener(this)
+        mMap.setOnMapClickListener {
+            sliding_layout.panelHeight = resources.getDimensionPixelSize(R.dimen.sliding_layout_height_hide)
+            if (btn_show_panel.visibility == View.GONE) {
+                btn_show_panel.visibility = View.VISIBLE
+            }
+            if (btn_logout.visibility == View.VISIBLE) {
+                btn_logout.visibility = View.GONE
+            }
+        }
     }
 
     override fun onMarkerClick(p0: Marker?): Boolean {
+        if (btn_logout.visibility == View.VISIBLE) {
+            btn_logout.visibility = View.GONE
+        }
         //Show SlidePanel
         if (btn_show_panel.visibility == View.VISIBLE) {
             btn_show_panel.visibility = View.GONE
         }
-        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
-//        sliding_layout.panelHeight = 190
         sliding_layout.panelHeight = resources.getDimensionPixelSize(R.dimen.sliding_layout_height)
         val hotel: Hotel = p0?.tag as Hotel
         tvHotelName.text = hotel.name

@@ -1,11 +1,15 @@
 package com.hotelgis.admin.ui
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.hotelgis.R
 import com.hotelgis.model.Hotel
 import com.hotelgis.model.Room
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_add_edit_hotel.*
 
 class AddEditHotelActivity : AppCompatActivity() {
@@ -18,9 +22,26 @@ class AddEditHotelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_hotel)
 
+        var hotel: Hotel? = null
+
+        if (intent != null) {
+            hotel = intent.getParcelableExtra(EXTRA_HOTEL)
+        }
+
         toolbar.title = resources.getString(R.string.add_data_hotel)
-        if (intent.getStringExtra(EXTRA_HOTEL) != null) {
+        if (hotel != null) {
             toolbar.title = resources.getString(R.string.edit_data_hotel)
+
+            edtHotelName.text = Editable.Factory.getInstance().newEditable(hotel.name)
+            edtHotelAddress.text = Editable.Factory.getInstance().newEditable(hotel.address)
+            edtHotelPhone.text = Editable.Factory.getInstance().newEditable(hotel.phone)
+            Glide.with(baseContext)
+                .load(hotel.image)
+                .error(R.drawable.ic_launcher_background)
+                .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(20, 0, RoundedCornersTransformation.CornerType.ALL)))
+                .into(imgHotel)
+            edtHotelLatitude.text = Editable.Factory.getInstance().newEditable(hotel.lat)
+            edtHotelLongitude.text = Editable.Factory.getInstance().newEditable(hotel.long)
         }
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

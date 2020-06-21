@@ -14,17 +14,18 @@ import com.hotelgis.model.Room
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_detail_hotel.*
 
-class DetailHotelActivity : AppCompatActivity() {
+class DetailHotelActivity : AppCompatActivity(), ListRoomAdapter.OnItemClickCallback {
 
     companion object {
         const val EXTRA_DETAIL_HOTEL = "EXTRA_DETAIL_HOTEL"
     }
 
+    private var hotel: Hotel? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_hotel)
 
-        var hotel: Hotel? = null
         if (intent != null) {
             hotel = intent.getParcelableExtra(EXTRA_DETAIL_HOTEL)
         }
@@ -35,27 +36,40 @@ class DetailHotelActivity : AppCompatActivity() {
 
         if (hotel != null) {
             Glide.with(baseContext)
-                .load(hotel.image)
+                .load(hotel?.image)
                 .error(R.drawable.ic_launcher_background)
                 .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(20, 0, RoundedCornersTransformation.CornerType.ALL)))
                 .into(imgHotel)
-            tvHotelName.text = hotel.name
-            tvHotelAddress.text = hotel.address
-            tvHotelPhone.text = hotel.phone
-            tvHotelLocation.text = (hotel.lat + ", " + hotel.long)
+            tvHotelName.text = hotel?.name
+            tvHotelAddress.text = hotel?.address
+            tvHotelPhone.text = hotel?.phone
+            tvHotelLocation.text = (hotel?.lat + ", " + hotel?.long)
 
             fabAddRoom.setOnClickListener {
                 val intentToAddRoom = Intent(baseContext, AddEditRoomActivity::class.java)
-                intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel.name)
+                intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel?.name)
                 startActivity(intentToAddRoom)
+            }
+
+            btnEditHotel.setOnClickListener {
+                val intentToEditHotel = Intent(baseContext, AddEditHotelActivity::class.java)
+                intentToEditHotel.putExtra(AddEditHotelActivity.EXTRA_HOTEL, hotel)
+                startActivity(intentToEditHotel)
             }
         }
 
         recyclerViewRoom.layoutManager = LinearLayoutManager(this)
 
-        val listRoomAdapter = ListRoomAdapter()
+        val listRoomAdapter = ListRoomAdapter(this)
         listRoomAdapter.listRoom = loadRoom()
         recyclerViewRoom.adapter = listRoomAdapter
+    }
+
+    override fun onItemClicked(room: Room) {
+        val intentToAddRoom = Intent(baseContext, AddEditRoomActivity::class.java)
+        intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel?.name)
+        intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_ROOM, room)
+        startActivity(intentToAddRoom)
     }
 
     private fun loadRoom(): List<Room> {
