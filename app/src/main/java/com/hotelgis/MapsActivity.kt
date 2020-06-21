@@ -26,7 +26,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_detail_hotel.*
 import kotlinx.android.synthetic.main.activity_maps.*
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
     private lateinit var mMap: GoogleMap
     private lateinit var tvHotelName: TextView
@@ -86,10 +86,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             mMap.animateCamera(cu)
         }
         mMap.setOnMarkerClickListener(this)
-
     }
 
     override fun onMarkerClick(p0: Marker?): Boolean {
+        //Show SlidePanel
+        if (btn_show_panel.visibility == View.VISIBLE) {
+            btn_show_panel.visibility = View.GONE
+        }
         val hotel: Hotel = p0?.tag as Hotel
         tvHotelName.text = hotel.name
         tvHotelAddress.text = hotel.address

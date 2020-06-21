@@ -59,5 +59,19 @@
     <string name="pay">Bayar</string>
     <string name="payment_method">Metode Pembayaran</string>
     <string name="bill">Total Tagihan</string>
+    <string name="tekan_marker_pada_peta_untuk_melihat_hotel">Tekan Marker Pada Peta Untuk Melihat Hotel</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="jumlah_kamar">Jumlah Kamar</string>
+    <string name="nama_pemesan">Nama Pemesan</string>
+    <string name="no_telepon">No Telepon</string>
+    <string name="date_hint">../../...</string>
+    <string name="konfirmasi_pemesanan">Konfirmasi Pemesanan</string>
+    <string name="silahkan_lakukan_review">Silahkan lakukan review pesanan terlebih dahulu sebelum melanjutkan ke pembayaran</string>
+    <string name="detail">Detail</string>
+    <string name="detail_pesanan">Detail Pesanan</string>
+    <string name="data_pemesan">Data Pemesan</string>
+    <string name="detail_harga">Detail Harga</string>
+    <string name="total">Total</string>
+    <string name="pembayaran">Pembayaran</string>
 
 </resources>

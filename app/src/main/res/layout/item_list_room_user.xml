@@ -121,7 +121,7 @@
                     android:layout_marginBottom="4dp">
 
                     <Button
-                        android:id="@+id/btnEditRoom"
+                        android:id="@+id/btnPesanKamar"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.7"

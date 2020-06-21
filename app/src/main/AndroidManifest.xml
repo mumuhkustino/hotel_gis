@@ -20,6 +20,15 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".admin.ui.RoomPaymentActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".KonfirmasiPemesananActivity"
+            android:label="@string/konfirmasi_pemesanan"></activity>
+        <activity
+            android:name=".PesanKamarActivity"
+            android:label="@string/pesan_kamar" />
+        <activity
+            android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,13 +54,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".admin.ui.RegisterUserActivity"
             android:theme="@style/AppTheme.NoActionBar" />
