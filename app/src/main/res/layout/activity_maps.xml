@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    app:umanoPanelHeight="190dp"
+    app:umanoPanelHeight="0dp"
     app:umanoScrollableView="@id/recyclerview_room_list"
     app:umanoShadowHeight="4dp"
     tools:context=".MapsActivity">

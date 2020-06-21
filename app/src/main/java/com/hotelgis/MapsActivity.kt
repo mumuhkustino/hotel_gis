@@ -1,29 +1,26 @@
 package com.hotelgis
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.maps.*
-
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.hotelgis.admin.adapter.ListRoomAdapter
 import com.hotelgis.admin.adapter.ListRoomUserAdapter
 import com.hotelgis.model.Hotel
 import com.hotelgis.model.Room
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
-import kotlinx.android.synthetic.main.activity_detail_hotel.*
 import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
@@ -57,6 +54,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         btn_logout.setOnClickListener {
             logoutUser()
         }
+
+        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
     }
 
     /**
@@ -93,6 +92,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         if (btn_show_panel.visibility == View.VISIBLE) {
             btn_show_panel.visibility = View.GONE
         }
+        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
+//        sliding_layout.panelHeight = 190
+        sliding_layout.panelHeight = resources.getDimensionPixelSize(R.dimen.sliding_layout_height)
         val hotel: Hotel = p0?.tag as Hotel
         tvHotelName.text = hotel.name
         tvHotelAddress.text = hotel.address

@@ -23,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".KonfirmasiPemesananActivity"
-            android:label="@string/konfirmasi_pemesanan"></activity>
+            android:label="@string/konfirmasi_pemesanan"/>
         <activity
             android:name=".PesanKamarActivity"
             android:label="@string/pesan_kamar" />
