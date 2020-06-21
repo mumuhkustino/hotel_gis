@@ -29,7 +29,7 @@ class RoomPaymentActivity : AppCompatActivity(), ListPaymentMethodAdapter.OnItem
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         if (intent != null) {
-            tvRoomCost.text = intent.getParcelableExtra(EXTRA_ROOM_COST)
+            tvRoomCost.text = intent.getStringExtra(EXTRA_ROOM_COST)
         }
 
         slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.HIDDEN
