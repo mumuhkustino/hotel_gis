@@ -33,10 +33,30 @@ class RegisterUserActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btnAddDataUser.setOnClickListener {
-            if (edtUserPassword.text.toString().equals(edtUserRetypePassword.text.toString()))
-                registerUser(edtUserEmail.text.toString(), edtUserPassword.text.toString())
-            else
-                Toast.makeText(baseContext, "Konfirmasi Password Berbeda", Toast.LENGTH_SHORT).show()
+            if (!edtUserName.text.toString().equals("") && !edtUserName.text.toString().equals("")) {
+                if (!edtUserNoTelp.text.toString().equals("") && !edtUserNoTelp.text.toString().equals("")) {
+                    if (!edtUserEmail.text.toString().equals("") && !edtUserEmail.text.toString().equals("")) {
+                        if (!edtUserPassword.text.toString().equals("") && !edtUserPassword.text.toString().equals("")) {
+                            if (edtUserPassword.text.length >= 6) {
+                                if (edtUserPassword.text.toString().equals(edtUserRetypePassword.text.toString()))
+                                    registerUser(edtUserEmail.text.toString(), edtUserPassword.text.toString())
+                                else
+                                    Toast.makeText(baseContext, "Konfirmasi Password Berbeda", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(baseContext, "Panjang password kurang dari 6", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            Toast.makeText(baseContext, "Password kosong", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(baseContext, "Email kosong", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(baseContext, "No Tlp kosong", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(baseContext, "Nama kosong", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
