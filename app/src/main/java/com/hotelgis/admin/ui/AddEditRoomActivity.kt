@@ -11,15 +11,21 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.hotelgis.R
 import com.hotelgis.model.Hotel
 import com.hotelgis.model.Room
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
+import kotlinx.android.synthetic.main.activity_add_edit_hotel.*
 import kotlinx.android.synthetic.main.activity_add_edit_room.*
+import kotlinx.android.synthetic.main.activity_add_edit_room.btnBrowseImage
+import kotlinx.android.synthetic.main.activity_add_edit_room.toolbar
+import kotlinx.android.synthetic.main.activity_add_edit_room.tvImageName
 
 class AddEditRoomActivity : AppCompatActivity() {
     private val db: FirebaseFirestore = Firebase.firestore
@@ -27,6 +33,7 @@ class AddEditRoomActivity : AppCompatActivity() {
     private var curUrl: String? = null
     private var hotels: ArrayList<Hotel>? = null
     private var hotel: Hotel? = null
+    private var hotelName: String? = null
     private var room: Room? = null
 
     companion object {
@@ -40,10 +47,11 @@ class AddEditRoomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_room)
 
-        var hotelName: String? = ""
+
 
         if (intent != null) {
-            hotel = intent.getParcelableExtra(EXTRA_HOTEL)
+            hotel = intent.getParcelableExtra(EXTRA_HOTEL) as? Hotel
+            hotelName = hotel?.name
             room = intent.getParcelableExtra(EXTRA_ROOM) as? Room
             hotels = intent.getParcelableArrayListExtra(EXTRA_LIST_HOTEL)
         }
@@ -57,7 +65,8 @@ class AddEditRoomActivity : AppCompatActivity() {
 
             edtRoomCode.text = Editable.Factory.getInstance().newEditable(room?.code)
             edtRoomName.text = Editable.Factory.getInstance().newEditable(room?.name)
-            edtRoomQuantity.text = Editable.Factory.getInstance().newEditable(room?.quantity.toString())
+            edtRoomQuantity.text =
+                Editable.Factory.getInstance().newEditable(room?.quantity.toString())
             edtRoomCost.text = Editable.Factory.getInstance().newEditable(room?.cost.toString())
             btnAddDataRoom.text = resources.getString(R.string.edit_data_room)
 
@@ -74,7 +83,8 @@ class AddEditRoomActivity : AppCompatActivity() {
                     )
                 )
                 .into(imgRoom)
-            val imgName: String = edtRoomName.text.toString().toLowerCase().replace("\\s".toRegex(), "_")
+            val imgName: String =
+                edtRoomName.text.toString().toLowerCase().replace("\\s".toRegex(), "_")
             tvImageName.text = "image_room_$imgName"
             edtRoomFacility.text = Editable.Factory.getInstance().newEditable(room?.facility)
             hotelName = spinnerView.text.toString()
@@ -109,39 +119,52 @@ class AddEditRoomActivity : AppCompatActivity() {
         }
 
         btnAddDataRoom.setOnClickListener {
-            if (!spinnerView.text.toString().equals("") && !spinnerView.text.toString().equals(null)) {
-                if (!edtRoomCode.text.toString().equals("") && !edtRoomCode.text.toString().equals(null)) {
-                    if (!edtRoomName.text.toString().equals("") && !edtRoomName.text.toString().equals(null)) {
-                        if (!edtRoomQuantity.text.toString().equals("") && !edtRoomQuantity.text.toString().equals(null)) {
-                            if (!edtRoomCost.text.toString().equals("") && !edtRoomCost.text.toString().equals(null)) {
-                                if (!tvImageName.text.toString().equals("") && !tvImageName.text.toString().equals(null) && !tvImageName.text.toString().equals("Image1.jpeg")) {
-                                    if (!edtRoomFacility.text.toString().equals("") && !edtRoomFacility.text.toString().equals(null)) {
-                                        val newRoom = Room(
-                                            hotelName!!,
-                                            edtRoomCode.text.toString(),
-                                            edtRoomName.text.toString(),
-                                            edtRoomQuantity.text.toString().toInt(),
-                                            edtRoomCost.text.toString().toInt(),
-                                            edtRoomFacility.text.toString(),
-                                            tvImageName.text.toString()
-                                        )
-                                        if (toolbar.title == resources.getString(R.string.add_data_room)) {
-                                            Toast.makeText(this, "Click tambah kamar", Toast.LENGTH_SHORT).show()
-                                            addRoom(newRoom)
-                                        } else {
-                                            editRoom(newRoom)
-                                        }
+            if (!spinnerView.text.toString().equals("") && !spinnerView.text.toString()
+                    .equals(null)
+            ) {
+                if (!edtRoomCode.text.toString().equals("") && !edtRoomCode.text.toString()
+                        .equals(null)
+                ) {
+                    if (!edtRoomName.text.toString().equals("") && !edtRoomName.text.toString()
+                            .equals(null)
+                    ) {
+                        if (!edtRoomQuantity.text.toString()
+                                .equals("") && !edtRoomQuantity.text.toString().equals(null)
+                        ) {
+                            if (!edtRoomCost.text.toString()
+                                    .equals("") && !edtRoomCost.text.toString().equals(null)
+                            ) {
+                                if (!tvImageName.text.toString()
+                                        .equals("") && !tvImageName.text.toString()
+                                        .equals(null) && !tvImageName.text.toString()
+                                        .equals("Image1.jpeg")
+                                ) {
+                                    if (!edtRoomFacility.text.toString()
+                                            .equals("") && !edtRoomFacility.text.toString()
+                                            .equals(null)
+                                    ) {
+                                        uploadRoomImage(tvImageName.text.toString())
                                     } else {
-                                        Toast.makeText(baseContext, "Fasilitias Room kosong", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            baseContext,
+                                            "Fasilitias Room kosong",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
                                 } else {
-                                    Toast.makeText(baseContext, "Image Room kosong", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        baseContext,
+                                        "Image Room kosong",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                             } else {
-                                Toast.makeText(baseContext, "Harga Room kosong", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(baseContext, "Harga Room kosong", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         } else {
-                            Toast.makeText(baseContext, "Jumlah Room kosong", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(baseContext, "Jumlah Room kosong", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     } else {
                         Toast.makeText(baseContext, "Nama Room kosong", Toast.LENGTH_SHORT).show()
@@ -164,8 +187,55 @@ class AddEditRoomActivity : AppCompatActivity() {
                 imgRoom.setImageURI(it)
                 val imgName: String =
                     edtRoomName.text.toString().toLowerCase().replace("\\s".toRegex(), "_")
-                tvImageName.text = "image_hotel_$imgName"
+                tvImageName.text = "image_room_$imgName"
             }
+        }
+    }
+
+    private fun uploadRoomImage(fileName: String) {
+        if (curFile != null) {
+            Firebase.storage.reference.child("images/$fileName").delete()
+                .addOnCompleteListener {
+                    Firebase.storage.reference.child("images/$fileName").putFile(curFile!!)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Upload success!", Toast.LENGTH_SHORT).show()
+                            Firebase.storage.reference.child("images/$fileName").downloadUrl
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        curUrl = task.result.toString()
+                                    }
+                                    //Ketika url berhasil didapat, lagsung add data to hotel
+                                    val newRoom = Room(
+                                        hotelName!!,
+                                        edtRoomCode.text.toString(),
+                                        edtRoomName.text.toString(),
+                                        edtRoomQuantity.text.toString().toInt(),
+                                        edtRoomCost.text.toString().toInt(),
+                                        edtRoomFacility.text.toString(),
+                                        curUrl.toString()
+                                    )
+                                    if (!btnAddDataRoom.text.toString()
+                                            .equals(resources.getString(R.string.edit_data_room))
+                                    ) {
+                                        addRoom(newRoom)
+                                    } else {
+                                        editRoom(newRoom)
+                                    }
+                                }
+                        }
+                }
+
+        } else {
+            val newRoom = Room(
+                hotelName!!,
+                edtRoomCode.text.toString(),
+                edtRoomName.text.toString(),
+                edtRoomQuantity.text.toString().toInt(),
+                edtRoomCost.text.toString().toInt(),
+                edtRoomFacility.text.toString(),
+                tvImageName.text.toString()
+            )
+            editRoom(newRoom)
         }
     }
 
