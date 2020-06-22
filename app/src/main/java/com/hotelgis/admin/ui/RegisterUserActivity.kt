@@ -33,7 +33,7 @@ class RegisterUserActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btnAddDataUser.setOnClickListener {
-            if (edtUserPassword.text.equals(edtUserRetypePassword.text))
+            if (edtUserPassword.text.toString().equals(edtUserRetypePassword.text.toString()))
                 registerUser(edtUserEmail.text.toString(), edtUserPassword.text.toString())
             else
                 Toast.makeText(baseContext, "Konfirmasi Password Berbeda", Toast.LENGTH_SHORT).show()
