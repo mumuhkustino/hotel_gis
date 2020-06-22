@@ -34,8 +34,8 @@ class RegisterUserActivity : AppCompatActivity() {
 
         btnAddDataUser.setOnClickListener {
             if (!edtUserName.text.toString().equals("") && !edtUserName.text.toString().equals("")) {
-                if (!edtUserNoTelp.text.toString().equals("") && !edtUserNoTelp.text.toString().equals("")) {
-                    if (!edtUserEmail.text.toString().equals("") && !edtUserEmail.text.toString().equals("")) {
+                if (!edtUserEmail.text.toString().equals("") && !edtUserEmail.text.toString().equals("")) {
+                    if (!edtUserNoTelp.text.toString().equals("") && !edtUserNoTelp.text.toString().equals("")) {
                         if (!edtUserPassword.text.toString().equals("") && !edtUserPassword.text.toString().equals("")) {
                             if (edtUserPassword.text.length >= 6) {
                                 if (edtUserPassword.text.toString().equals(edtUserRetypePassword.text.toString()))
@@ -49,10 +49,10 @@ class RegisterUserActivity : AppCompatActivity() {
                             Toast.makeText(baseContext, "Password kosong", Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(baseContext, "Email kosong", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "No Tlp kosong", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(baseContext, "No Tlp kosong", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Email kosong", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(baseContext, "Nama kosong", Toast.LENGTH_SHORT).show()
