@@ -43,6 +43,9 @@ class AddEditHotelActivity : AppCompatActivity() {
         }
 
         toolbar.title = resources.getString(R.string.add_data_hotel)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         if (hotel != null) {
             toolbar.title = resources.getString(R.string.edit_data_hotel)
 
@@ -62,12 +65,12 @@ class AddEditHotelActivity : AppCompatActivity() {
                     )
                 )
                 .into(imgHotel)
+            val imgName: String = edtHotelName.text.toString().toLowerCase().replace("\\s".toRegex(), "_")
+            tvImageName.text = "image_hotel_$imgName"
             edtHotelLatitude.text = Editable.Factory.getInstance().newEditable(hotel?.lat)
             edtHotelLongitude.text = Editable.Factory.getInstance().newEditable(hotel?.long)
             btnAddDataHotel.text = resources.getString(R.string.edit_data_hotel)
         }
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btnBrowseImage.setOnClickListener {
             if (!edtHotelName.text.toString().equals("")) {
@@ -82,32 +85,33 @@ class AddEditHotelActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
             }
-//            tvImageName.text = //Name Image (ex: Image1.jpeg)
-//            Glide.with(baseContext)
-//                .load(image)
-//                .error(R.drawable.ic_launcher_background)
-//                .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(20, 0, RoundedCornersTransformation.CornerType.ALL)))
-//                .into(imgHotel)
         }
 
         btnAddDataHotel.setOnClickListener {
-            if (!edtHotelName.text.toString().equals("") && !edtHotelName.text.toString()
-                    .equals(null) &&
-                !edtHotelAddress.text.toString().equals("") && !edtHotelAddress.text.toString()
-                    .equals(null) &&
-                !edtHotelPhone.text.toString().equals("") && !edtHotelPhone.text.toString()
-                    .equals(null) &&
-                !tvImageName.text.toString().equals("") && !tvImageName.text.toString()
-                    .equals(null) &&
-                !edtHotelLatitude.text.toString().equals("") && !edtHotelLatitude.text.toString()
-                    .equals(null) &&
-                !edtHotelLongitude.text.toString().equals("") && !edtHotelLongitude.text.toString()
-                    .equals(null)
-            ) {
-                uploadImageToStorage(tvImageName.text.toString())
-
-
+            if (!edtHotelName.text.toString().equals("") && !edtHotelName.text.toString().equals(null)) {
+                if (!edtHotelAddress.text.toString().equals("") && !edtHotelAddress.text.toString().equals(null)) {
+                    if (!edtHotelPhone.text.toString().equals("") && !edtHotelPhone.text.toString().equals(null)) {
+                        if (!edtHotelLatitude.text.toString().equals("") && !edtHotelLatitude.text.toString().equals(null)) {
+                            if (!edtHotelLongitude.text.toString().equals("") && !edtHotelLongitude.text.toString().equals(null)) {
+                                if (!tvImageName.text.toString().equals("") && !tvImageName.text.toString().equals(null)) {
+                                    uploadImageToStorage(tvImageName.text.toString())
+                                } else {
+                                    Toast.makeText(baseContext, "Image Hotel kosong", Toast.LENGTH_SHORT).show()
+                                }
+                            } else {
+                                Toast.makeText(baseContext, "Longitude Hotel kosong", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            Toast.makeText(baseContext, "Latitude Hotel kosong", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(baseContext, "No. Tlp Hotel kosong", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(baseContext, "Alamat Hotel kosong", Toast.LENGTH_SHORT).show()
+                }
             } else {
+                Toast.makeText(baseContext, "Nama Hotel kosong", Toast.LENGTH_SHORT).show()
                 Log.d("d", "Gawa:Ada yang null")
             }
         }
@@ -222,10 +226,10 @@ class AddEditHotelActivity : AppCompatActivity() {
             data?.data?.let {
                 curFile = it
                 imgHotel.setImageURI(it)
+                val imgName: String =
+                    edtHotelName.text.toString().toLowerCase().replace("\\s".toRegex(), "_")
+                tvImageName.text = "image_hotel_$imgName"
             }
-            val imgName: String =
-                edtHotelName.text.toString().toLowerCase().replace("\\s".toRegex(), "_")
-            tvImageName.text = "image_hotel_$imgName"
         }
     }
 

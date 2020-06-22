@@ -72,46 +72,6 @@ class DetailHotelActivity : AppCompatActivity(), ListRoomAdapter.OnItemClickCall
         startActivity(intentToAddRoom)
     }
 
-    private fun loadRoom(): List<Room> {
-        return mutableListOf(
-            Room("Hotel Hilton Bandung",
-                "F2810",
-                "Family Suite",
-                210,
-                500000,
-                "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png"),
-            Room("Hotel Hilton Bandung",
-                "F2810",
-                "Family Suite",
-                210,
-                500000,
-                "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png"),
-            Room("Hotel Hilton Bandung",
-                "F2810",
-                "Family Suite",
-                210,
-                500000,
-                "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png"),
-            Room("Hotel Hilton Bandung",
-                "F2810",
-                "Family Suite",
-                210,
-                500000,
-                "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png"),
-            Room("Hotel Hilton Bandung",
-                "F2810",
-                "Family Suite",
-                210,
-                500000,
-                "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png")
-        )
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()
