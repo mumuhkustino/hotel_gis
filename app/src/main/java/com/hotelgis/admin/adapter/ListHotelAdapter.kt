@@ -14,7 +14,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 class ListHotelAdapter(private val onItemClickCallback: OnItemClickCallback): RecyclerView.Adapter<ListHotelAdapter.ViewHolder>() {
 
-    var listHotel: List<Hotel> = arrayListOf()
+    var listHotel: ArrayList<Hotel> = arrayListOf()
 
     set(value) {
         field = value

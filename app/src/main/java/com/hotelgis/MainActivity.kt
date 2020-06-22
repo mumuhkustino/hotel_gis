@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.addRoom -> {
                 val intentToDetail = Intent(baseContext, AddEditRoomActivity::class.java)
+                intentToDetail.putParcelableArrayListExtra(AddEditRoomActivity.EXTRA_LIST_HOTEL, listHotelAdapter.listHotel)
                 startActivity(intentToDetail)
             }
             R.id.logout -> {

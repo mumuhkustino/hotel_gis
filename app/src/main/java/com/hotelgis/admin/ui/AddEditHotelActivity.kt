@@ -37,7 +37,6 @@ class AddEditHotelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_hotel)
 
-
         if (intent != null) {
             hotel = intent.getParcelableExtra(EXTRA_HOTEL)
         }

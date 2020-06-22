@@ -45,12 +45,6 @@ class DetailHotelActivity : AppCompatActivity(), ListRoomAdapter.OnItemClickCall
             tvHotelPhone.text = hotel?.phone
             tvHotelLocation.text = (hotel?.lat + ", " + hotel?.long)
 
-            fabAddRoom.setOnClickListener {
-                val intentToAddRoom = Intent(baseContext, AddEditRoomActivity::class.java)
-                intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel)
-                startActivity(intentToAddRoom)
-            }
-
             btnEditHotel.setOnClickListener {
                 val intentToEditHotel = Intent(baseContext, AddEditHotelActivity::class.java)
                 intentToEditHotel.putExtra(AddEditHotelActivity.EXTRA_HOTEL, hotel)
@@ -62,6 +56,12 @@ class DetailHotelActivity : AppCompatActivity(), ListRoomAdapter.OnItemClickCall
             val listRoomAdapter = ListRoomAdapter(this)
             listRoomAdapter.listRoom = hotel!!.rooms
             recyclerViewRoom.adapter = listRoomAdapter
+        }
+
+        fabAddRoom.setOnClickListener {
+            val intentToAddRoom = Intent(baseContext, AddEditRoomActivity::class.java)
+            intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel)
+            startActivity(intentToAddRoom)
         }
     }
 
