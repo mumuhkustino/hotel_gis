@@ -20,16 +20,13 @@ import com.hotelgis.R
 import com.hotelgis.model.Hotel
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_add_edit_hotel.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AddEditHotelActivity : AppCompatActivity() {
 
     private val db: FirebaseFirestore = Firebase.firestore
     private var curFile: Uri? = null
     private var curUrl: String? = null
+    private var hotel: Hotel? = null
 
     companion object {
         const val EXTRA_HOTEL = "EXTRA_HOTEL"
@@ -40,7 +37,6 @@ class AddEditHotelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_hotel)
 
-        var hotel: Hotel? = null
 
         if (intent != null) {
             hotel = intent.getParcelableExtra(EXTRA_HOTEL)
@@ -50,11 +46,11 @@ class AddEditHotelActivity : AppCompatActivity() {
         if (hotel != null) {
             toolbar.title = resources.getString(R.string.edit_data_hotel)
 
-            edtHotelName.text = Editable.Factory.getInstance().newEditable(hotel.name)
-            edtHotelAddress.text = Editable.Factory.getInstance().newEditable(hotel.address)
-            edtHotelPhone.text = Editable.Factory.getInstance().newEditable(hotel.phone)
+            edtHotelName.text = Editable.Factory.getInstance().newEditable(hotel?.name)
+            edtHotelAddress.text = Editable.Factory.getInstance().newEditable(hotel?.address)
+            edtHotelPhone.text = Editable.Factory.getInstance().newEditable(hotel?.phone)
             Glide.with(baseContext)
-                .load(hotel.image)
+                .load(hotel?.image)
                 .error(R.drawable.ic_launcher_background)
                 .apply(
                     RequestOptions.bitmapTransform(
@@ -66,8 +62,8 @@ class AddEditHotelActivity : AppCompatActivity() {
                     )
                 )
                 .into(imgHotel)
-            edtHotelLatitude.text = Editable.Factory.getInstance().newEditable(hotel.lat)
-            edtHotelLongitude.text = Editable.Factory.getInstance().newEditable(hotel.long)
+            edtHotelLatitude.text = Editable.Factory.getInstance().newEditable(hotel?.lat)
+            edtHotelLongitude.text = Editable.Factory.getInstance().newEditable(hotel?.long)
             btnAddDataHotel.text = resources.getString(R.string.edit_data_hotel)
         }
         setSupportActionBar(toolbar)
@@ -111,25 +107,46 @@ class AddEditHotelActivity : AppCompatActivity() {
                 uploadImageToStorage(tvImageName.text.toString())
 
 
+            } else {
+                Log.d("d", "Gawa:Ada yang null")
             }
         }
     }
 
-    private fun updateHotelDataToFirestore(hotel: Hotel) {
+    private fun updateHotelDataToFirestore(hotelNew: Hotel) {
         db.collection("hotels")
-            .whereEqualTo("name", hotel.name)
-            .whereEqualTo("address", hotel.address)
-            .whereEqualTo("phone", hotel.phone)
-            .whereEqualTo("lat", hotel.lat)
-            .whereEqualTo("long", hotel.long)
+            .whereEqualTo("name", hotel?.name)
+            .whereEqualTo("address", hotel?.address)
+            .whereEqualTo("phone", hotel?.phone)
+            .whereEqualTo("lat", hotel?.lat)
+            .whereEqualTo("long", hotel?.long)
             .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    db.collection("hotels").document(document.id).set(hotel)
+            .addOnSuccessListener {
+                if (it.documents.size != 0) {
+                    db.collection("hotels").document(it.documents.get(0).id)
+                        .update(
+                            mapOf(
+                                "name" to hotelNew.name,
+                                "address" to hotelNew.address,
+                                "image" to hotelNew.image,
+                                "phone" to hotelNew.phone,
+                                "lat" to hotelNew.lat,
+                                "long" to hotelNew.long
+                            )
+                        ).addOnSuccessListener {
+                            Toast.makeText(
+                                this,
+                                "Hotel has successfully been updated",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                            finish()
+                        }.addOnFailureListener {
+                            Toast.makeText(this, "Failed to updated hotel", Toast.LENGTH_SHORT)
+                                .show()
+                            finish()
+                        }
                 }
-                Toast.makeText(this, "Hotel has successfully been updated", Toast.LENGTH_SHORT)
-                    .show()
-                finish()
             }.addOnFailureListener { exception ->
                 Log.w("AEHA", "Error updating documents: ", exception)
                 Toast.makeText(this, "Failed to updated hotel", Toast.LENGTH_SHORT).show()
@@ -137,52 +154,67 @@ class AddEditHotelActivity : AppCompatActivity() {
             }
     }
 
-    private fun uploadImageToStorage(fileName: String) = CoroutineScope(Dispatchers.IO).launch {
-        try {
-            curFile?.let {
-                Firebase.storage.reference.child("images/$fileName").putFile(it)
-                    .continueWithTask { task ->
-                        if (!task.isSuccessful) {
-                            task.exception?.let {
-                                throw it
-                            }
+    private fun uploadImageToStorage(fileName: String) {
+        if (curFile != null) {
+            Firebase.storage.reference.child("images/$fileName").delete()
+                .addOnCompleteListener {
+                    Firebase.storage.reference.child("images/$fileName").putFile(curFile!!)
+                        .addOnCompleteListener {
+                            Log.d("d", "Gawa:UploadComplete")
+                        }.addOnSuccessListener {
+                            Log.d("d", "Gawa:UploadSuccess")
+                            Firebase.storage.reference.child("images/$fileName").downloadUrl
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        curUrl = task.result.toString()
+                                    }
+                                    //Ketika url berhasil didapat, lagsung add data to hotel
+                                    val hotelNew = Hotel(
+                                        Firebase.auth.currentUser?.uid.toString(),
+                                        edtHotelName.text.toString(),
+                                        edtHotelAddress.text.toString(),
+                                        edtHotelPhone.text.toString(),
+                                        curUrl.toString(),
+                                        edtHotelLatitude.text.toString(),
+                                        edtHotelLongitude.text.toString(),
+                                        arrayListOf()
+                                    )
+                                    if (!btnAddDataHotel.text.toString()
+                                            .equals(resources.getString(R.string.edit_data_hotel))
+                                    ) {
+                                        addHotelDataToFirestore(hotelNew)
+                                        Log.d("d", "Gawa:Uploading image BERHASIL ADDHOTEL")
+                                    } else {
+                                        updateHotelDataToFirestore(hotelNew)
+                                        Log.d("d", "Gawa:Uploading image BERHASIL UPDATEHOTEL")
+                                    }
+                                    //                        addHotelDataToFirestore(hotel)
+                                    Log.d("", "Gawa:$curUrl")
+                                }.addOnSuccessListener {
+                                    Log.d("d", "Gawa:GETURL image BERHASIL")
+                                }
+                                .addOnFailureListener {
+
+                                    Log.d("d", "Gawa:GETURL image GAGAL")
+                                }
                         }
-                        Firebase.storage.reference.child("images/$fileName").downloadUrl
-                    }.addOnCompleteListener { task ->
-                        if (task.isSuccessful)
-                            curUrl = task.result.toString()
-                        //Ketika url berhasil didapat, lagsung add data to hotel
-                        val hotel = Hotel(
-                            Firebase.auth.currentUser?.uid.toString(),
-                            edtHotelName.text.toString(),
-                            edtHotelAddress.text.toString(),
-                            edtHotelPhone.text.toString(),
-                            curUrl.toString(),
-                            edtHotelLatitude.text.toString(),
-                            edtHotelLongitude.text.toString(),
-                            arrayListOf()
-                        )
-                        if (!btnAddDataHotel.text.toString()
-                                .equals(resources.getString(R.string.edit_data_hotel))
-                        ) {
-                            addHotelDataToFirestore(hotel)
-                        } else {
-                            updateHotelDataToFirestore(hotel)
-                        }
-//                        addHotelDataToFirestore(hotel)
-                        Log.d("", curUrl)
-                    }
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(baseContext, "Successfully uploaded image", Toast.LENGTH_LONG)
-                        .show()
                 }
-            }
-        } catch (e: Exception) {
-            withContext(Dispatchers.Main) {
-                Toast.makeText(baseContext, e.message, Toast.LENGTH_LONG).show()
-            }
+
+        } else {
+            val hotelNew = Hotel(
+                Firebase.auth.currentUser?.uid.toString(),
+                edtHotelName.text.toString(),
+                edtHotelAddress.text.toString(),
+                edtHotelPhone.text.toString(),
+                hotel?.image.toString(),
+                edtHotelLatitude.text.toString(),
+                edtHotelLongitude.text.toString(),
+                arrayListOf()
+            )
+            updateHotelDataToFirestore(hotelNew)
         }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
