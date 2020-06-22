@@ -93,7 +93,7 @@ class AddEditHotelActivity : AppCompatActivity() {
                     if (!edtHotelPhone.text.toString().equals("") && !edtHotelPhone.text.toString().equals(null)) {
                         if (!edtHotelLatitude.text.toString().equals("") && !edtHotelLatitude.text.toString().equals(null)) {
                             if (!edtHotelLongitude.text.toString().equals("") && !edtHotelLongitude.text.toString().equals(null)) {
-                                if (!tvImageName.text.toString().equals("") && !tvImageName.text.toString().equals(null)) {
+                                if (!tvImageName.text.toString().equals("") && !tvImageName.text.toString().equals(null) && !tvImageName.text.toString().equals("Image1.jpeg")) {
                                     uploadImageToStorage(tvImageName.text.toString())
                                 } else {
                                     Toast.makeText(baseContext, "Image Hotel kosong", Toast.LENGTH_SHORT).show()
