@@ -20,6 +20,8 @@ import com.hotelgis.model.Hotel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.nav_header_content.*
+import kotlinx.android.synthetic.main.nav_header_content.view.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     ListHotelAdapter.OnItemClickCallback {
@@ -55,6 +57,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         retrieveHotels()
+
+        showDisplayName()
+    }
+
+    private fun showDisplayName(){
+        Firebase.firestore.collection("users")
+            .whereEqualTo("uid",Firebase.auth.currentUser?.uid)
+            .get()
+            .addOnSuccessListener {
+                if(it.documents.size!=0){
+                    navView.getHeaderView(0).tvAccountName.text = it.documents[0].getString("username")
+                }
+            }
     }
 
     private fun retrieveHotels() {
