@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Hotel(
+    var userid:String = "",
     var name: String = "",
     var address: String = "",
     var phone: String = "",

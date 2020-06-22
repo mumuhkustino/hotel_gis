@@ -59,10 +59,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun retrieveHotels() {
         var hotels: ArrayList<Hotel> = arrayListOf()
-        db.get().addOnSuccessListener {
+        db.whereEqualTo("userid", Firebase.auth.currentUser?.uid.toString()).get().addOnSuccessListener {
             result ->
             for (document in result) {
                 hotels.add(Hotel(
+                    document["userid"].toString(),
                     document["name"].toString(),
                     document["address"].toString(),
                     document["phone"].toString(),
@@ -76,76 +77,76 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun loadHotel(): List<Hotel> {
-//        DATA DUMMY ROOM
-        var rooms: ArrayList<Room> = ArrayList()
-        rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja","imageUrl"))
-        return mutableListOf(
-            Hotel(
-                "Hotel Hilton Bandung",
-                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
-                "0.0",
-                "0.0",
-                rooms
-            ),
-            Hotel(
-                "Hotel Hilton Bandung",
-                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
-                "0.0",
-                "0.0",
-                rooms
-            ),
-            Hotel(
-                "Hotel Hilton Bandung",
-                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
-                "0.0",
-                "0.0",
-                rooms
-            ),
-            Hotel(
-                "Hotel Hilton Bandung",
-                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
-                "0.0",
-                "0.0",
-                rooms
-            ),
-            Hotel(
-                "Hotel Hilton Bandung",
-                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
-                "0.0",
-                "0.0",
-                rooms
-            ),
-            Hotel(
-                "Hotel Hilton Bandung",
-                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
-                "+62 87878787878",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
-                "0.0",
-                "0.0",
-                rooms
-            ),
-            Hotel(
-                "Hotel Hilton Bandung",
-                "Jl. Raya ABCD EFGH No. 128, Kota Bandung",
-                "+62 87878787878",
-                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
-                "0.0",
-                "0.0",
-                rooms
-            )
-        )
-    }
+//    private fun loadHotel(): List<Hotel> {
+////        DATA DUMMY ROOM
+//        var rooms: ArrayList<Room> = ArrayList()
+//        rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja","imageUrl"))
+//        return mutableListOf(
+//            Hotel(
+//                "Hotel Hilton Bandung",
+//                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
+//                "+62 87878787878",
+//                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+//                "0.0",
+//                "0.0",
+//                rooms
+//            ),
+//            Hotel(
+//                "Hotel Hilton Bandung",
+//                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
+//                "+62 87878787878",
+//                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+//                "0.0",
+//                "0.0",
+//                rooms
+//            ),
+//            Hotel(
+//                "Hotel Hilton Bandung",
+//                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
+//                "+62 87878787878",
+//                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+//                "0.0",
+//                "0.0",
+//                rooms
+//            ),
+//            Hotel(
+//                "Hotel Hilton Bandung",
+//                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
+//                "+62 87878787878",
+//                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+//                "0.0",
+//                "0.0",
+//                rooms
+//            ),
+//            Hotel(
+//                "Hotel Hilton Bandung",
+//                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
+//                "+62 87878787878",
+//                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+//                "0.0",
+//                "0.0",
+//                rooms
+//            ),
+//            Hotel(
+//                "Hotel Hilton Bandung",
+//                "Jl. Raya ABCD EFGH No. 128, Kec. Cicendo, Kota Bandung",
+//                "+62 87878787878",
+//                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+//                "0.0",
+//                "0.0",
+//                rooms
+//            ),
+//            Hotel(
+//                "Hotel Hilton Bandung",
+//                "Jl. Raya ABCD EFGH No. 128, Kota Bandung",
+//                "+62 87878787878",
+//                "https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png",
+//                "0.0",
+//                "0.0",
+//                rooms
+//            )
+//        )
+//    }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when (p0.itemId) {

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -122,16 +123,16 @@ class AddEditHotelActivity : AppCompatActivity() {
             .whereEqualTo("lat", hotel.lat)
             .whereEqualTo("long", hotel.long)
             .get()
-            .addOnSuccessListener {
-                    result ->
+            .addOnSuccessListener { result ->
                 for (document in result) {
                     db.collection("hotels").document(document.id).set(hotel)
                 }
-                Toast.makeText(this,"Hotel has successfully been updated",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Hotel has successfully been updated", Toast.LENGTH_SHORT)
+                    .show()
                 finish()
             }.addOnFailureListener { exception ->
                 Log.w("AEHA", "Error updating documents: ", exception)
-                Toast.makeText(this,"Failed to updated hotel",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to updated hotel", Toast.LENGTH_SHORT).show()
                 finish()
             }
     }
@@ -152,6 +153,7 @@ class AddEditHotelActivity : AppCompatActivity() {
                             curUrl = task.result.toString()
                         //Ketika url berhasil didapat, lagsung add data to hotel
                         val hotel = Hotel(
+                            Firebase.auth.currentUser?.uid.toString(),
                             edtHotelName.text.toString(),
                             edtHotelAddress.text.toString(),
                             edtHotelPhone.text.toString(),
@@ -160,7 +162,9 @@ class AddEditHotelActivity : AppCompatActivity() {
                             edtHotelLongitude.text.toString(),
                             arrayListOf()
                         )
-                        if (!btnAddDataHotel.text.toString().equals(resources.getString(R.string.edit_data_hotel))) {
+                        if (!btnAddDataHotel.text.toString()
+                                .equals(resources.getString(R.string.edit_data_hotel))
+                        ) {
                             addHotelDataToFirestore(hotel)
                         } else {
                             updateHotelDataToFirestore(hotel)
