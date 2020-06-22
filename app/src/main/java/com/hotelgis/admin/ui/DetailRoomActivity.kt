@@ -36,6 +36,8 @@ class DetailRoomActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         tvHeaderListRoom.text = "Kamar lain di ${room.place}"
+        tvRoomName.text = room.name
+        tvRoomCode.text = "Kode Kamar : ${room.code}"
         Glide.with(baseContext)
             .load(room.image)
             .error(R.drawable.ic_launcher_background)

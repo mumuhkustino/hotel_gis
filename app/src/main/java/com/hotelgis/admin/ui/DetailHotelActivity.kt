@@ -56,13 +56,13 @@ class DetailHotelActivity : AppCompatActivity(), ListRoomAdapter.OnItemClickCall
                 intentToEditHotel.putExtra(AddEditHotelActivity.EXTRA_HOTEL, hotel)
                 startActivity(intentToEditHotel)
             }
+
+            recyclerViewRoom.layoutManager = LinearLayoutManager(this)
+
+            val listRoomAdapter = ListRoomAdapter(this)
+            listRoomAdapter.listRoom = hotel!!.rooms
+            recyclerViewRoom.adapter = listRoomAdapter
         }
-
-        recyclerViewRoom.layoutManager = LinearLayoutManager(this)
-
-        val listRoomAdapter = ListRoomAdapter(this)
-        listRoomAdapter.listRoom = loadRoom()
-        recyclerViewRoom.adapter = listRoomAdapter
     }
 
     override fun onItemClicked(room: Room) {
