@@ -206,7 +206,7 @@ class AddEditRoomActivity : AppCompatActivity() {
                                     }
                                     //Ketika url berhasil didapat, lagsung add data to hotel
                                     val newRoom = Room(
-                                        hotelName!!,
+                                        spinnerView.text.toString(),
                                         edtRoomCode.text.toString(),
                                         edtRoomName.text.toString(),
                                         edtRoomQuantity.text.toString().toInt(),
@@ -227,7 +227,7 @@ class AddEditRoomActivity : AppCompatActivity() {
 
         } else {
             val newRoom = Room(
-                hotelName!!,
+                spinnerView.text.toString(),
                 edtRoomCode.text.toString(),
                 edtRoomName.text.toString(),
                 edtRoomQuantity.text.toString().toInt(),
@@ -242,9 +242,7 @@ class AddEditRoomActivity : AppCompatActivity() {
     private fun addRoom(newRoom: Room) {
         val hotelsCollection = db.collection("hotels")
         hotelsCollection
-            .whereEqualTo("name", hotel?.name)
-            .whereEqualTo("lat", hotel?.lat)
-            .whereEqualTo("long", hotel?.long)
+            .whereEqualTo("name", newRoom?.place)
             .get()
             .addOnSuccessListener {
                 if (it.documents.size != 0) {
