@@ -13,7 +13,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hotelgis.LoginActivity
-import com.hotelgis.MapsActivity
 import com.hotelgis.R
 import kotlinx.android.synthetic.main.activity_register_user.*
 
@@ -34,7 +33,10 @@ class RegisterUserActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btnAddDataUser.setOnClickListener {
-            registerUser(edtUserEmail.text.toString(), edtUserPassword.text.toString())
+            if (edtUserPassword.text.equals(edtUserRetypePassword.text))
+                registerUser(edtUserEmail.text.toString(), edtUserPassword.text.toString())
+            else
+                Toast.makeText(baseContext, "Konfirmasi Password Berbeda", Toast.LENGTH_SHORT).show()
         }
     }
 

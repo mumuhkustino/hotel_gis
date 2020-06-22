@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hotelgis.admin.adapter.ListHotelAdapter
 import com.hotelgis.admin.ui.AddEditHotelActivity
@@ -22,6 +23,9 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     ListHotelAdapter.OnItemClickCallback {
+
+    private lateinit var listHotelAdapter: ListHotelAdapter
+    private val db = Firebase.firestore.collection("hotels")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,14 +46,38 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setCheckedItem(R.id.listHotel)
 
         recyclerViewHotel.layoutManager = LinearLayoutManager(this)
-
-        val listHotelAdapter = ListHotelAdapter(this)
-        listHotelAdapter.listHotel = loadHotel()
+        listHotelAdapter = ListHotelAdapter(this)
         recyclerViewHotel.adapter = listHotelAdapter
+
+        fabAddHotel.setOnClickListener {
+            val intentToDetail = Intent(baseContext, AddEditHotelActivity::class.java)
+            startActivity(intentToDetail)
+        }
+
+        retrieveHotels()
+    }
+
+    private fun retrieveHotels() {
+        var hotels: ArrayList<Hotel> = arrayListOf()
+        db.get().addOnSuccessListener {
+            result ->
+            for (document in result) {
+                hotels.add(Hotel(
+                    document["name"].toString(),
+                    document["address"].toString(),
+                    document["phone"].toString(),
+                    document["image"].toString(),
+                    document["lat"].toString(),
+                    document["long"].toString(),
+                    document["rooms"] as ArrayList<Room>
+                ))
+            }
+            listHotelAdapter.listHotel = hotels
+        }
     }
 
     private fun loadHotel(): List<Hotel> {
-        //DATA DUMMY ROOM
+//        DATA DUMMY ROOM
         var rooms: ArrayList<Room> = ArrayList()
         rooms.add(Room("Special Place", "CODE132", "Room Name", 2, 200000, "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja","imageUrl"))
         return mutableListOf(
@@ -148,8 +176,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        retrieveHotels()
+    }
+
     override fun onResume() {
         super.onResume()
         navView.setCheckedItem(R.id.listHotel)
+        retrieveHotels()
     }
 }
