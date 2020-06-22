@@ -47,7 +47,7 @@ class DetailHotelActivity : AppCompatActivity(), ListRoomAdapter.OnItemClickCall
 
             fabAddRoom.setOnClickListener {
                 val intentToAddRoom = Intent(baseContext, AddEditRoomActivity::class.java)
-                intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel?.name)
+                intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel)
                 startActivity(intentToAddRoom)
             }
 
@@ -67,7 +67,7 @@ class DetailHotelActivity : AppCompatActivity(), ListRoomAdapter.OnItemClickCall
 
     override fun onItemClicked(room: Room) {
         val intentToAddRoom = Intent(baseContext, AddEditRoomActivity::class.java)
-        intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel?.name)
+        intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_HOTEL, hotel)
         intentToAddRoom.putExtra(AddEditRoomActivity.EXTRA_ROOM, room)
         startActivity(intentToAddRoom)
     }
