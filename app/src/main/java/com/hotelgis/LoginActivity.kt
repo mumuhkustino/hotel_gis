@@ -1,12 +1,12 @@
 package com.hotelgis
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -15,7 +15,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hotelgis.admin.ui.RegisterUserActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -29,12 +28,28 @@ class LoginActivity : AppCompatActivity() {
 
         val btnLoginUser = findViewById(R.id.btn_login_user) as Button
         btnLoginUser.setOnClickListener {
-            loginUser(et_email.text.toString(), et_password.text.toString())
+            if (!et_email.text.toString().equals("") && !et_email.text.toString().equals(null)) {
+                if (!et_password.text.toString().equals("") && !et_password.text.toString().equals(null)) {
+                    loginUser(et_email.text.toString(), et_password.text.toString())
+                } else {
+                    Toast.makeText(baseContext, "Password kosong", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(baseContext, "Email kosong", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val btnLoginAdmin = findViewById(R.id.btn_login_admin) as Button
         btnLoginAdmin.setOnClickListener {
-            loginAdmin(et_email.text.toString(), et_password.text.toString())
+            if (!et_email.text.toString().equals("") && !et_email.text.toString().equals(null)) {
+                if (!et_password.text.toString().equals("") && !et_password.text.toString().equals(null)) {
+                loginAdmin(et_email.text.toString(), et_password.text.toString())
+                } else {
+                    Toast.makeText(baseContext, "Password kosong", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(baseContext, "Email kosong", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val btnRegistrasiUser = findViewById(R.id.btn_register) as TextView
@@ -57,6 +72,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
+            Toast.makeText(baseContext, "Login User Sukses", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
             finish()
@@ -115,6 +131,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUIAdmin(user: FirebaseUser?) {
         if (user != null) {
+            Toast.makeText(baseContext, "Login Admin Sukses", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -186,6 +203,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun logoutUser() {
         Log.d("d", "Gawa:logout")
+        Toast.makeText(baseContext, "Logout Sukses", Toast.LENGTH_SHORT).show()
         Firebase.auth.signOut()
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
