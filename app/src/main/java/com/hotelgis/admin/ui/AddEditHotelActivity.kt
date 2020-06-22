@@ -112,10 +112,6 @@ class AddEditHotelActivity : AppCompatActivity() {
             }
         }
     }
-    
-    private fun loadData(hotel:Hotel){
-
-    }
 
     private fun updateHotelDataToFirestore(hotelNew: Hotel) {
         db.collection("hotels")
