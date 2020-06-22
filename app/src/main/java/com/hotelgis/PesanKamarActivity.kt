@@ -5,10 +5,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.hotelgis.model.Room
 import kotlinx.android.synthetic.main.activity_pesan_kamar.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class PesanKamarActivity : AppCompatActivity() {
@@ -48,17 +50,30 @@ class PesanKamarActivity : AppCompatActivity() {
                 et_nama_pemesan.text.toString() != "" && et_nama_pemesan.text != null &&
                 et_no_telepon.text.toString() != "" && et_no_telepon.text != null) {
                 val room = intent.getParcelableExtra<Room>(EXTRA_DETAIL_ROOM)
-                val newIntent = Intent(this, KonfirmasiPemesananActivity::class.java).apply {
-                    putExtra("ROOM_PLACE", room.place)
-                    putExtra("ROOM_CODE", room.code)
-                    putExtra("ROOM_NAME", room.name)
-                    putExtra("ROOM_COST", room.cost)
-                    putExtra("PESAN_TANGGAL", et_tanggal.text.toString())
-                    putExtra("PESAN_JUMLAH_KAMAR", et_jumlah_kamar.text.toString().toInt())
-                    putExtra("PESAN_NAMA_PEMESAN", et_nama_pemesan.text.toString())
-                    putExtra("PESAN_NO_TELP", et_no_telepon.text.toString())
+                val dateBook: Date = SimpleDateFormat("dd/MM/yyyy").parse(et_tanggal.text.toString())
+                if (et_jumlah_kamar.text.toString().toInt() <= room.quantity)
+                    if (System.currentTimeMillis() < dateBook.time ||
+                        (Date().date.compareTo(dateBook.date)==0)) {
+                        val newIntent =
+                            Intent(this, KonfirmasiPemesananActivity::class.java).apply {
+                                putExtra("ROOM_PLACE", room.place)
+                                putExtra("ROOM_CODE", room.code)
+                                putExtra("ROOM_NAME", room.name)
+                                putExtra("ROOM_COST", room.cost)
+                                putExtra("PESAN_TANGGAL", et_tanggal.text.toString())
+                                putExtra(
+                                    "PESAN_JUMLAH_KAMAR",
+                                    et_jumlah_kamar.text.toString().toInt()
+                                )
+                                putExtra("PESAN_NAMA_PEMESAN", et_nama_pemesan.text.toString())
+                                putExtra("PESAN_NO_TELP", et_no_telepon.text.toString())
+                            }
+                        startActivity(newIntent)
+                    } else {
+                        Toast.makeText(baseContext, "Tanggal booking telah terlalui", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(baseContext, "Jumlah Kamar yang tersedia hanya " + room.quantity, Toast.LENGTH_SHORT).show()
                 }
-                startActivity(newIntent)
             }
         }
     }

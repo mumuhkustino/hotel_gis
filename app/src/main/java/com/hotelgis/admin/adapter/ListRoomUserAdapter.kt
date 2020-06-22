@@ -38,10 +38,10 @@ class ListRoomUserAdapter : RecyclerView.Adapter<ListRoomUserAdapter.ViewHolder>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val room = listRoom[position]
 
-        holder.tvRoomCode.text = room.code
+        holder.tvRoomCode.text = " ${room.code}"
         holder.tvRoomName.text = room.name
         holder.tvRoomQuantity.text = room.quantity.toString()
-        holder.tvRoomCost.text = room.cost.toString()
+        holder.tvRoomCost.text = "Rp. ${room.cost} / malam"
 
         holder.btnLihatKamar.setOnClickListener {
             val intent = Intent(context, DetailRoomActivity::class.java).apply {
