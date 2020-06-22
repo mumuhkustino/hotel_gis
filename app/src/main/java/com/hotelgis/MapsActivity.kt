@@ -23,7 +23,6 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.hotelgis.admin.adapter.ListRoomUserAdapter
 import com.hotelgis.model.Hotel
-import com.hotelgis.model.Room
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_maps.*

@@ -103,6 +103,7 @@
                     style="@style/TextViewTitlePink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:layout_marginBottom="10dp"
                     android:text="@string/hotel_name" />
 

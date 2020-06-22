@@ -34,6 +34,7 @@ class KonfirmasiPemesananActivity : AppCompatActivity() {
 
         btn_pembayaran.setOnClickListener {
             val intent = Intent(this, RoomPaymentActivity::class.java)
+            intent.putExtra("EXTRA_ROOM_COST", tv_harga_total.text.toString())
             startActivity(intent)
         }
     }
