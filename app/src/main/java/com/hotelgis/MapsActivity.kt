@@ -2,6 +2,7 @@ package com.hotelgis
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,6 +17,9 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.hotelgis.admin.adapter.ListRoomUserAdapter
 import com.hotelgis.model.Hotel
@@ -31,6 +35,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
     private lateinit var tvHotelAddress: TextView
     private lateinit var tvHotelPhone: TextView
     private lateinit var imgHotel: ImageView
+    private val db: FirebaseFirestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,23 +81,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        var builder = LatLngBounds.builder()
-        getHotels().forEach {
-            // Add a marker in Sydney and move the camera
-            val latlong = LatLng(it.lat.toDouble(), it.long.toDouble())
-            val marker: Marker = mMap.addMarker(MarkerOptions().position(latlong).title(it.name))
-            marker.tag = it
-            builder.include(marker.position)
-        }
-        var bounds: LatLngBounds = builder.build()
-        var padding = 40 // offset from edges of the map in pixels
-        var cu: CameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         mMap.setOnMapLoadedCallback {
-            mMap.animateCamera(cu)
+            getHotels()
         }
-        mMap.setOnMarkerClickListener(this)
+
         mMap.setOnMapClickListener {
-            sliding_layout.panelHeight = resources.getDimensionPixelSize(R.dimen.sliding_layout_height_hide)
+            sliding_layout.panelHeight =
+                resources.getDimensionPixelSize(R.dimen.sliding_layout_height_hide)
             if (btn_show_panel.visibility == View.GONE) {
                 btn_show_panel.visibility = View.VISIBLE
             }
@@ -137,81 +132,36 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
         return false
     }
 
-    fun getHotels(): ArrayList<Hotel> {
-        return arrayListOf(
-            Hotel(
-                "Mumuh Hotel",
-                "Jalan Tasikmalaya",
-                "022 6040032",
-                "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg",
-                "0",
-                "10",
-                arrayListOf(
-                    Room("Mumuh Hotel",
-                        "CODE132",
-                        "Special Suite",
-                        2,
-                        200000,
-                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg"),
-                    Room("Mumuh Hotel",
-                        "CODE133",
-                        "Ordinary",
-                        1,
-                        100000,
-                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg")
-                )
-            ),
-            Hotel(
-                "Gawa Hotel",
-                "Jalan Kinagara",
-                "022 6044030",
-                "https://www.hrs.com/en/media/image/ca/18/bf/Hotel_Equatorial_Ho_Chi_Minh_City-Ho-Chi-Minh-Stadt-Aussenansicht-2-62178_600x600.jpg",
-                "0",
-                "20",
-                arrayListOf(
-                    Room("Gawa Hotel",
-                        "CODE132",
-                        "Special Suite",
-                        2,
-                        200000,
-                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg"),
-                    Room("Gawa Hotel",
-                        "CODE133",
-                        "Ordinary",
-                        1,
-                        100000,
-                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg")
-                )
-            ),
-            Hotel(
-                "Pajo Hotel",
-                "Jalan Paledang",
-                "022 6046030",
-                "https://www.hrs.com/en/media/image/07/g0/2d/Sure_Hotel_by_Best_Western_Center-Goeteborg-Aussenansicht-2-375260_600x600.jpg",
-                "0",
-                "30",
-                arrayListOf(
-                    Room("Pajo Hotel",
-                        "CODE132",
-                        "Special Suite",
-                        2,
-                        200000,
-                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg"),
-                    Room("Pajo Hotel",
-                        "CODE133",
-                        "Ordinary",
-                        1,
-                        100000,
-                        "Kasur 2 single, AC, Kamar mandi di dalam, tv layar datar, kedap suara, wifi gratis, peralatan mandi, telepon, sandal, ketel listrik, lemari, meja kerja",
-                        "https://www.hrs.com/en/media/image/ff/97/72/Cape_Racha_Hotel_Serviced_Apartments-Si_Racha-Aussenansicht-452044_600x600.jpg")
-                )
-            )
-        )
+    fun getHotels() {
+        var hotels: ArrayList<Hotel> = ArrayList()
+        db.collection("hotels")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    var hotel = document.toObject<Hotel>()
+                    hotels.add(hotel)
+                }
+                showMarkerOnMap(hotels)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("d", "Error getting documents: ", exception)
+            }
+    }
+
+    private fun showMarkerOnMap(hotels: ArrayList<Hotel>) {
+        var builder = LatLngBounds.builder()
+        hotels.forEach {
+            // Add a marker in Sydney and move the camera
+            val latlong = LatLng(it.lat.toDouble(), it.long.toDouble())
+            val marker: Marker = mMap.addMarker(MarkerOptions().position(latlong).title(it.name))
+            marker.tag = it
+            builder.include(marker.position)
+        }
+        var bounds: LatLngBounds = builder.build()
+        var padding = 40 // offset from edges of the map in pixels
+        var cu: CameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        mMap.animateCamera(cu)
+        mMap.setOnMarkerClickListener(this)
     }
 
     fun logoutUser() {
