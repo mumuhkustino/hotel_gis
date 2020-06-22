@@ -114,6 +114,28 @@ class AddEditHotelActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateHotelDataToFirestore(hotel: Hotel) {
+        db.collection("hotels")
+            .whereEqualTo("name", hotel.name)
+            .whereEqualTo("address", hotel.address)
+            .whereEqualTo("phone", hotel.phone)
+            .whereEqualTo("lat", hotel.lat)
+            .whereEqualTo("long", hotel.long)
+            .get()
+            .addOnSuccessListener {
+                    result ->
+                for (document in result) {
+                    db.collection("hotels").document(document.id).set(hotel)
+                }
+                Toast.makeText(this,"Hotel has successfully been updated",Toast.LENGTH_SHORT).show()
+                finish()
+            }.addOnFailureListener { exception ->
+                Log.w("AEHA", "Error updating documents: ", exception)
+                Toast.makeText(this,"Failed to updated hotel",Toast.LENGTH_SHORT).show()
+                finish()
+            }
+    }
+
     private fun uploadImageToStorage(fileName: String) = CoroutineScope(Dispatchers.IO).launch {
         try {
             curFile?.let {
@@ -138,7 +160,12 @@ class AddEditHotelActivity : AppCompatActivity() {
                             edtHotelLongitude.text.toString(),
                             arrayListOf()
                         )
-                        addHotelDataToFirestore(hotel)
+                        if (!btnAddDataHotel.text.toString().equals(resources.getString(R.string.edit_data_hotel))) {
+                            addHotelDataToFirestore(hotel)
+                        } else {
+                            updateHotelDataToFirestore(hotel)
+                        }
+//                        addHotelDataToFirestore(hotel)
                         Log.d("", curUrl)
                     }
                 withContext(Dispatchers.Main) {
