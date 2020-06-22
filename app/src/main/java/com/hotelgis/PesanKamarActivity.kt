@@ -45,35 +45,46 @@ class PesanKamarActivity : AppCompatActivity() {
         }
 
         btn_pesan_kamar.setOnClickListener {
-            if (et_tanggal.text.toString() != "" && et_tanggal.text != null &&
-                et_jumlah_kamar.text.toString() != "" && et_jumlah_kamar.text != null &&
-                et_nama_pemesan.text.toString() != "" && et_nama_pemesan.text != null &&
-                et_no_telepon.text.toString() != "" && et_no_telepon.text != null) {
-                val room = intent.getParcelableExtra<Room>(EXTRA_DETAIL_ROOM)
-                val dateBook: Date = SimpleDateFormat("dd/MM/yyyy").parse(et_tanggal.text.toString())
-                if (et_jumlah_kamar.text.toString().toInt() <= room.quantity)
-                    if (System.currentTimeMillis() < dateBook.time ||
-                        (Date().date.compareTo(dateBook.date)==0)) {
-                        val newIntent =
-                            Intent(this, KonfirmasiPemesananActivity::class.java).apply {
-                                putExtra("ROOM_PLACE", room.place)
-                                putExtra("ROOM_CODE", room.code)
-                                putExtra("ROOM_NAME", room.name)
-                                putExtra("ROOM_COST", room.cost)
-                                putExtra("PESAN_TANGGAL", et_tanggal.text.toString())
-                                putExtra(
-                                    "PESAN_JUMLAH_KAMAR",
-                                    et_jumlah_kamar.text.toString().toInt()
-                                )
-                                putExtra("PESAN_NAMA_PEMESAN", et_nama_pemesan.text.toString())
-                                putExtra("PESAN_NO_TELP", et_no_telepon.text.toString())
+            if (et_tanggal.text.toString() != "" && et_tanggal.text != null) {
+                if (et_jumlah_kamar.text.toString() != "" && et_jumlah_kamar.text != null) {
+                    if (et_nama_pemesan.text.toString() != "" && et_nama_pemesan.text != null) {
+                        if (et_no_telepon.text.toString() != "" && et_no_telepon.text != null) {
+                            val room = intent.getParcelableExtra<Room>(EXTRA_DETAIL_ROOM)
+                            val dateBook: Date = SimpleDateFormat("dd/MM/yyyy").parse(et_tanggal.text.toString())
+                            if (et_jumlah_kamar.text.toString().toInt() <= room.quantity)
+                                if (System.currentTimeMillis() < dateBook.time ||
+                                    (Date().date.compareTo(dateBook.date)==0)) {
+                                    val newIntent =
+                                        Intent(this, KonfirmasiPemesananActivity::class.java).apply {
+                                            putExtra("ROOM_PLACE", room.place)
+                                            putExtra("ROOM_CODE", room.code)
+                                            putExtra("ROOM_NAME", room.name)
+                                            putExtra("ROOM_COST", room.cost)
+                                            putExtra("PESAN_TANGGAL", et_tanggal.text.toString())
+                                            putExtra(
+                                                "PESAN_JUMLAH_KAMAR",
+                                                et_jumlah_kamar.text.toString().toInt()
+                                            )
+                                            putExtra("PESAN_NAMA_PEMESAN", et_nama_pemesan.text.toString())
+                                            putExtra("PESAN_NO_TELP", et_no_telepon.text.toString())
+                                        }
+                                    startActivity(newIntent)
+                                } else {
+                                    Toast.makeText(baseContext, "Tanggal booking telah terlalui", Toast.LENGTH_SHORT).show()
+                                } else {
+                                Toast.makeText(baseContext, "Jumlah Kamar yang tersedia hanya " + room.quantity, Toast.LENGTH_SHORT).show()
                             }
-                        startActivity(newIntent)
+                        } else {
+                            Toast.makeText(baseContext, "No Tlp tidak terisi", Toast.LENGTH_SHORT).show()
+                        }
                     } else {
-                        Toast.makeText(baseContext, "Tanggal booking telah terlalui", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "Nama pemesan tidak terisi", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
-                    Toast.makeText(baseContext, "Jumlah Kamar yang tersedia hanya " + room.quantity, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Jumlah kamar tidak terisi", Toast.LENGTH_SHORT).show()
                 }
+            } else {
+                Toast.makeText(baseContext, "Tanggal tidak terisi", Toast.LENGTH_SHORT).show()
             }
         }
     }
